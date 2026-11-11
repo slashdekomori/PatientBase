@@ -24,7 +24,7 @@
 Создать папку, например `C:\PatientBase`, и положить в неё:
 
 - `PatientBase.exe` — из папки сборки (`release\PatientBase.exe`);
-- `docparser.exe` — из `build\Desktop_Qt_6_7_3_MinGW_64_bit-Release\release\` в проекте;
+- `DocParser.exe` — из корня проекта;
 - `settings.ini`;
 - папку `Sources_files`;
 - папку `шаблоны_основных_документов`;
@@ -43,21 +43,28 @@
    ```bat
    cd C:\PatientBase
    windeployqt --release PatientBase.exe
-Рядом с программой появятся DLL-файлы и папка sqldrivers.
-5. Настроить базу и запустить
-1. Открыть settings.ini блокнотом и указать host, port, name,
-user, password сервера PostgreSQL.
-2. Запустить PatientBase.exe двойным щелчком.
-3. При печати документы сохраняются в папку Output.
+   ```
+
+Рядом с программой появятся DLL-файлы и папка `sqldrivers`.
+
+## 5. Настроить базу и запустить
+
+1. Открыть `settings.ini` блокнотом и указать `host`, `port`, `name`,
+   `user`, `password` сервера PostgreSQL.
+2. Запустить `PatientBase.exe` двойным щелчком.
+3. При печати документы сохраняются в папку `Output`.
+
 Сервер PostgreSQL должен быть уже настроен администратором
-(см. server/README.md).
-Если что-то не работает
-- «Драйвер не загружен» / «driver not loaded» — не хватает
-sqldrivers\qsqlpsql.dll или libpq.dll. Проверить, что команда
-windeployqt выполнена и папка sqldrivers лежит рядом с .exe.
-- Не подключается к базе — проверить settings.ini и доступность
-сервера PostgreSQL.
-- Не печатает документы — проверить, что docparser.exe лежит
-рядом с PatientBase.exe.
-- SmartScreen или антивирус ругается на docparser.exe — разрешить
-запуск файла.
+(см. `server/README.md`).
+
+## Если что-то не работает
+
+- **«Драйвер не загружен» / «driver not loaded»** — не хватает
+  `sqldrivers\qsqlpsql.dll` или `libpq.dll`. Проверить, что команда
+  `windeployqt` выполнена и папка `sqldrivers` лежит рядом с `.exe`.
+- **Не подключается к базе** — проверить `settings.ini` и доступность
+  сервера PostgreSQL.
+- **Не печатает документы** — проверить, что `DocParser.exe` лежит
+  рядом с `PatientBase.exe`.
+- **SmartScreen или антивирус ругается на `DocParser.exe`** — разрешить
+  запуск файла.
