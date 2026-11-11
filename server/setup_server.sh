@@ -2,7 +2,6 @@
 set -euo pipefail
 
 # ---- defaults (overridden by setup.ini next to this script) ----
-LAN=""
 DB_PASS=""
 DB_NAME="patientbase"
 DB_USER="pb"
@@ -14,14 +13,10 @@ if [ -f "$INI" ]; then
     while IFS='=' read -r k v; do
         v="${v%$'\r'}"
         case "$k" in
-        LAN | DB_PASS | DB_NAME | DB_USER) printf -v "$k" '%s' "$v" ;;
+        DB_PASS | DB_NAME | DB_USER) printf -v "$k" '%s' "$v" ;;
         esac
     done < <(grep -v '^\s*[#;]' "$INI")
 fi
-[ -n "$LAN" ] || {
-    echo "LAN is not set (setup.ini)"
-    exit 1
-}
 [ -n "$DB_PASS" ] || {
     echo "DB_PASS is not set (setup.ini)"
     exit 1
@@ -48,22 +43,22 @@ SQL
 sudo -u postgres psql -tc "SELECT 1 FROM pg_database WHERE datname='$DB_NAME'" | grep -q 1 ||
     sudo -u postgres psql -c "CREATE DATABASE $DB_NAME OWNER $DB_USER ENCODING 'UTF8' TEMPLATE template0 LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';"
 
-# 3. Network: listen, SSL only, per-subnet rules
+# 3. Network: слушаем все интерфейсы, доступ только по SSL с любого адреса
 cat >"$CONF/conf.d/patientbase.conf" <<EOF
-listen_addresses = '*'
+listen_addresses = '0.0.0.0'
 ssl = on
 ssl_min_protocol_version = 'TLSv1.2'
 log_connections = on
 log_disconnections = on
 EOF
 
-IFS=',' read -ra NETS <<<"$LAN"
-for NET in "${NETS[@]}"; do
-    NET="${NET// /}"
-    LINE="hostssl  $DB_NAME  $DB_USER  $NET  scram-sha-256"
+# Без списка сетей: правило на любой адрес, защита — пароль + SSL (scram-sha-256).
+# all, а не $DB_NAME: новые базы отделений добавляются без правки pg_hba.conf
+for CIDR in 0.0.0.0/0 ::/0; do
+    LINE="hostssl  all  $DB_USER  $CIDR  scram-sha-256"
     grep -qxF "$LINE" "$CONF/pg_hba.conf" || echo "$LINE" >>"$CONF/pg_hba.conf"
-    if command -v ufw >/dev/null; then ufw allow from "$NET" to any port 5432 || true; fi
 done
+if command -v ufw >/dev/null; then ufw allow 5432/tcp || true; fi
 systemctl restart postgresql
 
 # 4. Schema

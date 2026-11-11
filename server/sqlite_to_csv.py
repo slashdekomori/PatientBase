@@ -6,7 +6,7 @@
 Использование:
     python sqlite_to_csv.py путь/к/DataBase.db
 Создаст рядом cases.csv и load_cases.sql. Дальше:
-    psql -h <сервер> -U pb -d patientbase -f load_cases.sql
+    psql -h <сервер> -U pb -d <база_отделения> -f load_cases.sql
 (запускать из той же папки, где лежит cases.csv)
 
 Что делает по дороге:
@@ -105,7 +105,7 @@ def main():
 
     print(f"Выгружено случаев: {rows} -> {out_csv}")
     print(f"Значений дат, которые были мусором и стали NULL: {nulled}")
-    print("Дальше: psql -h <сервер> -U pb -d patientbase -f load_cases.sql")
+    print("Дальше: psql -h <сервер> -U pb -d <база_отделения> -f load_cases.sql")
 
 
 if __name__ == "__main__":

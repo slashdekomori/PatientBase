@@ -51,6 +51,8 @@
 
 1. Открыть `settings.ini` блокнотом и указать `host`, `port`, `name`,
    `user`, `password` сервера PostgreSQL.
+   `name` — база именно этого отделения (на одном сервере их несколько,
+   список: `sudo bash server/add_database.sh --list` на сервере).
 2. Запустить `PatientBase.exe` двойным щелчком.
 3. При печати документы сохраняются в папку `Output`.
 

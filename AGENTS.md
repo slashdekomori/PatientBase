@@ -56,7 +56,8 @@ Qt 6 Widgets/SQL desktop registry for trauma patients. Russian UI, PostgreSQL ba
 
 ## Server
 
-- `server/setup_server.sh` is Debian-only and reads `server/setup.ini` (`LAN`, `DB_PASS`, `DB_NAME`, `DB_USER`). It enables SSL-only access per subnet and applies `server/schema.sql`.
+- `server/setup_server.sh` is Debian-only and reads `server/setup.ini` (`DB_PASS`, `DB_NAME`, `DB_USER`). It makes PostgreSQL listen on `0.0.0.0`, allows SSL-only password access from any address (no subnet list — the password is the only gate) and applies `server/schema.sql`.
+- One server hosts one database per hospital department (same role and password; a client picks its base only via `database/name` in `settings.ini`). `pg_hba.conf` gets `hostssl all <user> 0.0.0.0/0`, so a new base needs no config edit; `sudo bash server/add_database.sh <name> [--from <existing>]` creates it (or clones an existing one) and applies `schema.sql`. `--list` shows what exists. Clients stay untouched.
 - Migration: `python3 server/sqlite_to_csv.py <path>/DataBase.db` (stdlib only) generates `cases.csv` + `load_cases.sql`; run the latter with `psql` on a machine with server access.
 - Keep column names lowercase in `schema.sql`; the Qt app adapts case, but SQL comparisons (`ILIKE` search) rely on the DB's `en_US.UTF-8` collation set up by the script.
 
