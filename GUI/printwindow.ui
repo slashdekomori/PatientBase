@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PrintWindow</class>
+ <widget class="QDialog" name="PrintWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>458</width>
+    <height>326</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    font-family: &quot;Comic Sans MS&quot;;
+    background-color: rgb(35, 36, 39); /* Однотонный цвет фона */
+    color: #d3d3d3; /* Светлый текст, но не белый */
+}
+
+QTabWidget {
+    background-color: rgb(47, 48, 52);
+    border: none; /* Убираем рамку */
+    color: white; /* Белый текст для названий полей */
+    padding: 10px;
+}
+
+/* Стиль для вкладок QTabWidget */
+QTabBar::tab {
+    background: rgb(35, 36, 39);
+    color: #d3d3d3; /* Светлый текст */
+    padding: 10px;
+    border: none; /* Убираем рамку */
+    font-size: 18px;
+}
+
+QTabBar::tab:selected { 
+    color: white; /* Белый текст при выборе вкладки */ 
+    border-bottom: 1px solid #2baaff;
+} 
+
+QTabBar::tab:hover {
+    color: white; /* Белый текст при наведении */
+}
+
+QGroupBox {
+    border: none; /* Без рамки */
+    color: white; /* Белый текст для названий полей */
+    padding: 10px;
+}
+
+/* Стиль для QLabel */
+QLabel {
+    color: white; /* Белый текст */
+    background: none; /* Убираем градиент */
+    font-size: 18px; /* Размер текста */
+}
+
+/* Общий стиль для всех полей ввода */
+QComboBox, QLineEdit, QTextEdit, QDateTimeEdit, QDateEdit {
+    background: rgb(47, 48, 52); /* Цвет заполнения без градиента */
+    color: rgb(234, 235, 255); /* Светлый текст */
+    border: none; /* Без рамок */
+    border-radius: 3px; /* Скругленные углы */
+    font-size: 16px; /* Размер текста */
+}
+
+/* Стиль для QCheckBox */
+QCheckBox {
+    color: rgb(190, 211, 214); /* Светлый текст */
+    border: none; /* Без рамок */
+    border-radius: 3px; /* Скругленные углы */
+    font-size: 16px; /* Размер текста */
+}
+
+QCheckBox::indicator:checked {
+	color: white; /* Белый текст */
+    background: none; /* Убираем градиент */
+    border: 2px solid #2baaff; /* Рамка для отмеченного индикатора */
+}
+
+/* Стиль для отключенных чекбоксов */
+QCheckBox:disabled {
+    color: #7f7f7f; /* Приглушенный цвет текста */
+    opacity: 0.5; /* Уменьшенная непрозрачность для визуального эффекта */
+}
+
+/* Эффект фокуса для чекбоксов */
+
+
+/* Нижняя рамка для полей ввода при фокусе */
+QCheckBox:focus, QComboBox:focus, QLineEdit:focus, QTextEdit:focus, QDateTimeEdit:focus, QDateEdit:focus {
+    border-bottom: 1px solid #2baaff; /* Цвет нижней рамки при фокусе */
+}
+
+QCheckBox:checked {
+    border-bottom: 1px solid #2baaff; /* Рамка при отмеченном состоянии */
+}
+
+/* Стиль для QPushButton */
+QPushButton {
+    background-color: #333333; /* Цвет кнопки */
+    color: rgb(190, 211, 214); /* Светлый текст */
+    border: none; /* Без рамок */
+    padding: 10px;
+    border-radius: 5px;
+    border-bottom: 1px solid #2baaff;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #444444, stop: 1 #3b3b3b); /* Светлее при наведении */
+}
+
+QPushButton:pressed {
+    border: 2px solid #2baaff; /* Рамка при нажатии */
+}
+
+/* Эффект фокуса для кнопок */
+QPushButton:focus {
+    outline: none; /* Убираем стандартный фокус */
+    border: 2px solid #2baaff; /* Рамка при фокусе */
+}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="Operation1">
+        <property name="text">
+         <string>Операция1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="Epicrisis">
+        <property name="text">
+         <string>Выписной эпикриз</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="FirstExamination">
+        <property name="text">
+         <string>Первичный осмотр</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="RoundExamination">
+        <property name="text">
+         <string>Обход</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="Hystory">
+        <property name="text">
+         <string>Вся история</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="Operation2">
+        <property name="text">
+         <string>Операция2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="PrintButton">
+          <property name="text">
+           <string>Печать</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="CancelButton">
+          <property name="text">
+           <string>Отмена</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="AppointmentList">
+        <property name="text">
+         <string>Лист назначений</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="LoadLable">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="Form045">
+        <property name="text">
+         <string>Форма 045 и бланк АИГ</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
