@@ -1,6 +1,7 @@
 -- PatientBase: схема PostgreSQL (одна таблица, те же 346 столбцов, что и в SQLite).
--- Запускать под пользователем pb в базе patientbase:
---   psql -h <сервер> -U pb -d patientbase -f schema.sql
+-- Общая для Debian/Ubuntu и РЕД ОС. Обычно накатывается скриптами
+-- server/debian/setup_server.sh или server/redos/setup_server.sh.
+-- Вручную: PGSSLMODE=require psql -h <сервер> -U pb -d <база_отделения> -f schema.sql
 -- Имена столбцов в нижнем регистре (так их хранит PostgreSQL), программа сама сопоставляет их с виджетами.
 -- Поля, куда в SQLite можно было вписать что угодно (номер ИБ, давление, рост, вес, температура и т.д.), сделаны text.
 

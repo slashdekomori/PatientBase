@@ -89,6 +89,10 @@ CMakeLists.txt.user*
 /Output/
 *.db
 
+# Legacy migration output (contains patient data)
+/server/migration/cases.csv
+/server/migration/load_cases.sql
+
 # Generated/broken qmake files
 /qmake_qmake_qm_files.qrc
 

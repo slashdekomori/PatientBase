@@ -1,89 +1,89 @@
 # Сервер PatientBase
 
-!!! Скрипты расчитаны на Linux Debian !!!
-!!! IP сервера должен быть таким, чтобы все клиенты имели к нему доступ !!!
+Один сервер PostgreSQL обслуживает несколько отделений. Учетная запись и пароль
+общие, база у каждого отделения своя. Клиент про чужие базы не знает: в его
+`settings.ini` в `database/name` прописано только имя своей базы.
 
-Один сервер, одна учетка, по одной базе на отделение. Клиент про другие базы не знает:
-в его `settings.ini` в `database/name` прописано имя базы своего отделения.
+Схема у всех баз одинаковая — `server/schema.sql` (таблица `database`,
+346 столбцов). Она общая для Debian/Ubuntu и РЕД ОС.
 
-## 1. Установка сервера
+## С чего начать
 
-1. Скопировать на сервер из этой папки: `setup_server.sh`, `schema.sql`, `setup.ini`.
-2. Сгенерировать пароль: `openssl rand -base64 24`.
-3. Заполнить `setup.ini` (имя базы первого отделения — сразу по названию отделения):
-    ```
-    DB_PASS=<длинный случайный пароль>
-    DB_NAME=travma
-    DB_USER=pb
-    ```
-4. Запустить: `sudo bash setup_server.sh`
+- **Debian / Ubuntu** — [`debian/README.md`](debian/README.md).
+- **РЕД ОС 7.3 / 8** — [`redos/README.md`](redos/README.md).
+- **Перенос старых случаев из SQLite** — [`migration/README.md`](migration/README.md).
+- **Бэкапы** — [`backup.sh`](backup.sh), раздел «Бэкапы» ниже.
 
-Скрипт ставит PostgreSQL и локаль `en_US.UTF-8` (нужна для поиска `ILIKE` по кириллице),
-создает пользователя `DB_USER` и базу `DB_NAME` со схемой, включает SSL и `listen_addresses = '0.0.0.0'`,
-добавляет в `pg_hba.conf` правило `hostssl all <DB_USER> 0.0.0.0/0 scram-sha-256`.
+Скрипты рассчитаны на Linux-сервер. IP сервера должен быть доступен всем
+клиентским машинам отделения (локальная сеть или VPN).
 
-Списка сетей нет: пускает с любого адреса, но только по SSL и с паролем — **пароль из
-`setup.ini` это единственная защита**. Порт 5432 не выставлять в интернет, только локальная
-сеть или VPN. `ufw`, если установлен, скрипт открывает на 5432.
-
-Проверить, что все сошлось (вывод в конце установки):
-
-- `ssl: on`
-- `cyrillic ILIKE (expect t): t` — если `f`, поиск по русским буквам не будет работать, дальше не идти
-- `Done.`
-
-Проверка снаружи, с обычного рабочего места (нужен `psql`):
+## Что где лежит
 
 ```
-PGPASSWORD='<пароль>' PGSSLMODE=require psql -h <IP-сервера> -U pb -d travma \
-  -c "select count(*) from database"
+server/
+  README.md              этот файл: общая часть
+  schema.sql             схема таблицы database (общая для всех ОС)
+  backup.sh              ежедневный бэкап всех баз
+  debian/                установка сервера на Debian/Ubuntu
+    setup_server.sh
+    add_database.sh
+    setup.ini
+  redos/                 установка сервера на РЕД ОС
+    setup_server.sh
+    add_database.sh
+    setup.ini
+  migration/             перенос данных из старого DataBase.db
+    README.md
+    sqlite_to_csv.py
+    load_cases.sql.example
 ```
 
-Должно вернуться число (0 для пустой базы). Ошибка соединения — это файрвол/сеть, а не программа.
+Скрипты ищут `schema.sql` рядом с собой или на уровень выше, поэтому на сервер
+удобнее копировать каталог `server/` целиком, а не отдельный файл.
 
-## 2. Несколько баз (по одной на отделение)
+## Как устроен доступ
 
-Сервер и учетка общие, база у каждого отделения своя. Добавить базу (на сервере, рядом
-с `setup.ini` и `schema.sql`):
+`setup_server.sh`:
 
-```
-sudo bash add_database.sh travma                   # пустая база со схемой
-sudo bash add_database.sh hirurgia --from travma   # копия базы (схема и данные)
-sudo bash add_database.sh --list                   # что уже есть на сервере
-```
+- ставит PostgreSQL и локаль `en_US.UTF-8` (нужна для поиска `ILIKE` по кириллице);
+- создает пользователя `DB_USER` и базу `DB_NAME` со схемой;
+- включает SSL и `listen_addresses = '0.0.0.0'`;
+- добавляет в `pg_hba.conf` правило
+  `hostssl all <DB_USER> 0.0.0.0/0 scram-sha-256`;
+- открывает порт 5432 в файрволе, если он включен.
 
-Скрипт создает базу с нужной локалью, накатывает `schema.sql`, проверяет, что в таблице
-`database` все столбцы, и печатает готовый блок для `settings.ini` клиента.
-Правка `pg_hba.conf` и перезапуск PostgreSQL не нужны.
+Списка разрешенных сетей нет: пускает с любого адреса, но только по SSL и с
+паролем. **Пароль из `setup.ini` — единственная защита.** Порт 5432 нельзя
+выставлять в интернет, только локальная сеть или VPN.
 
-На клиенте нового отделения меняется только `database/name` — сам клиент одинаковый.
+## Порядок ввода первого отделения
 
-## 3. Порядок ввода первого отделения
-
-1. Сервер по разделу 1, `DB_NAME` = имя отделения (не `patientbase`).
-2. Перенос старых случаев по разделу 4, если они есть.
-3. Одна клиентская машина по `BUILD_WINDOWS_RU.md` (или `build_linux.sh`), `settings.ini` — по разделу 5.
-4. Смоук-тест на этой машине: открыть старый случай → «Сохранить» → создать новый случай →
-   поиск по фамилии → печать документа (документ должен появиться в `Output/`).
+1. Подготовить сервер по README своей ОС. `DB_NAME` — сразу имя отделения
+   (например, `travma`), а не `patientbase`.
+2. Перенести старые случаи по [`migration/README.md`](migration/README.md),
+   если они есть.
+3. Собрать и настроить одну клиентскую машину
+   (`BUILD_WINDOWS_RU.md` или `build_linux.sh`), прописать `settings.ini`.
+4. Смоук-тест на этой машине: открыть старый случай → «Сохранить» → создать
+   новый случай → поиск по фамилии → печать документа (документ должен
+   появиться в `Output/`).
 5. Только после этого раздать ту же папку остальным машинам отделения.
-6. Второе отделение — раздел 2, на его клиентах другой `database/name`.
+6. Второе отделение — добавить базу (раздел ниже), на его клиентах поменять
+   только `database/name`.
 
-## 4. Миграция данных из SQLite
+## Клиентские машины
 
-1. Извлечь данные (на машине, где есть старый `DataBase.db`):
-    `python3 sqlite_to_csv.py путь/к/DataBase.db` → появятся `cases.csv` и `load_cases.sql`
-2. Залить в базу отделения. Нужна машина с `psql` и файлами `cases.csv` + `load_cases.sql`
-   в текущем каталоге (`\copy` читает файл локально; проще всего делать это на самом сервере):
-    ```
-    PGSSLMODE=require psql -h <IP-сервера> -U pb -d travma -f load_cases.sql
-    ```
-3. Сверить `select count(*) from database` с числом случаев в старой базе.
+В папке рядом с `PatientBase.exe` (или `PatientBase` в Linux) должны лежать:
 
-## 5. Клиентские машины
+- `PatientBase.exe` / `PatientBase`;
+- `settings.ini`;
+- `Sources_files/`;
+- `DocParser.exe` / `DocParser.bin`;
+- `Output/`;
+- `шаблоны_основных_документов/`.
 
-В папке рядом с `PatientBase.exe`: `PatientBase.exe`, `settings.ini`, `Sources_files/`,
-`DocParser.exe`, `Output/`, `шаблоны_основных_документов/` (подробно — `BUILD_WINDOWS_RU.md`).
-Запускать строго из этой папки: `patient_data.json` и документы пишутся в текущий каталог.
+Запускать строго из этой папки: `patient_data.json` и документы пишутся в
+текущий каталог.
 
 ```ini
 [database]
@@ -94,55 +94,109 @@ user=pb
 password=<пароль из setup.ini>
 ```
 
-`name` — база своего отделения (список: `sudo bash add_database.sh --list` на сервере).
-`settings.ini` содержит пароль: не класть в git, не раздавать как «шаблон с паролем».
-
-## 6. Бэкапы (обязательно)
-
-Без бэкапов потеря базы необратима. Логический дамп по всем базам, ежедневно:
+`name` — база своего отделения. Список баз на сервере:
 
 ```bash
-#!/usr/bin/env bash
-# /usr/local/bin/pb-backup.sh
-set -euo pipefail
-out=/var/backups/patientbase
-mkdir -p "$out"
-for db in $(sudo -u postgres psql -tAc "SELECT datname FROM pg_database
-             WHERE datallowconn AND NOT datistemplate AND datname <> 'postgres'"); do
-    sudo -u postgres pg_dump -Fc "$db" > "$out/$db-$(date +%F).dump"
-done
-find "$out" -name '*.dump' -mtime +30 -delete
+# Debian/Ubuntu
+sudo bash server/debian/add_database.sh --list
+
+# РЕД ОС
+sudo bash server/redos/add_database.sh --list
 ```
 
-Cron (`/etc/cron.d/patientbase-backup`):
+`settings.ini` содержит пароль: не класть его в git и не раздавать как
+«шаблон с паролем».
+
+## Несколько баз (по одной на отделение)
+
+Сервер и учетка общие, база у каждого отделения своя. Добавить базу можно на
+уже настроенном сервере:
+
+```bash
+# Debian/Ubuntu
+sudo bash server/debian/add_database.sh travma
+sudo bash server/debian/add_database.sh hirurgia --from travma
+
+# РЕД ОС
+sudo bash server/redos/add_database.sh travma
+sudo bash server/redos/add_database.sh hirurgia --from travma
+```
+
+- без `--from` создается пустая база со схемой;
+- с `--from` копируется существующая база вместе с данными;
+- `--list` показывает базы и их размер.
+
+Скрипт проверяет число столбцов в таблице `database` и печатает готовый
+блок для `settings.ini` клиента. Правка `pg_hba.conf` и перезапуск PostgreSQL
+не нужны.
+
+## Бэкапы (обязательно)
+
+Без бэкапов потеря базы необратима. Логический дамп всех баз и ролей:
+
+```bash
+sudo bash server/backup.sh
+```
+
+Скрипт кладет `pg_dump -Fc` в `/var/backups/patientbase`, хранит 30 дней и
+удаляет старое. Каталог и срок можно переопределить:
+
+```bash
+PB_BACKUP_DIR=/mnt/backup PB_BACKUP_KEEP_DAYS=14 sudo -E bash server/backup.sh
+```
+
+Ежедневный запуск через cron (`/etc/cron.d/patientbase-backup`):
 
 ```
 30 2 * * * root /usr/local/bin/pb-backup.sh
 ```
 
-Копию каталога `/var/backups/patientbase` уносить с сервера (другая машина/диск).
-Восстановление:
+Для этого скопируйте скрипт в `/usr/local/bin/pb-backup.sh` и сделайте его
+исполняемым. Копию каталога с дампами нужно уносить с сервера — на другую
+машину или диск.
 
-```
+Восстановление базы (дамп читается через stdin, потому что каталог бэкапов
+доступен только root):
+
+```bash
 sudo -u postgres createdb -O pb travma_restore
-sudo -u postgres pg_restore -d travma_restore /var/backups/patientbase/travma-2026-11-11.dump
+sudo -u postgres pg_restore -d travma_restore < /var/backups/patientbase/travma-2026-11-11_023000.dump
 ```
 
-## 7. Обновление схемы
+Для версионного PostgreSQL в РЕД ОС `pg_restore` может лежать в
+`/usr/pgsql-<версия>/bin/` — используйте его полный путь.
 
-`schema.sql` использует только `CREATE TABLE IF NOT EXISTS`, поэтому повторный запуск
-не добавляет новые столбцы в существующую базу. При обновлении программы с новыми полями
-их надо добавить руками в каждую базу отделения:
+Перед восстановлением в рабочую базу обязательно сделайте ее бэкап.
 
-```
+## Обновление схемы
+
+`server/schema.sql` использует только `CREATE TABLE IF NOT EXISTS`, поэтому
+повторный запуск не добавляет новые столбцы в существующую базу. При
+обновлении программы с новыми полями их надо добавить руками в каждую базу
+отделения:
+
+```bash
 sudo -u postgres psql -d travma -c "ALTER TABLE database ADD COLUMN ..."
+```
+
+После добавления проверьте, что число столбцов совпадает со
+`SQLTable::table_columns_and_types` в `SQLTable/sqltable.h`:
+
+```bash
+sudo -u postgres psql -d travma -tAc \
+  "select count(*) from information_schema.columns
+   where table_schema='public' and table_name='database'"
 ```
 
 ## Типовые проблемы
 
-- **Клиент не соединяется** — проверить `host`/`password` в `settings.ini`, затем доступность
-  5432 с клиентской машины, затем `log_connections = on` в логе PostgreSQL на сервере.
-- **Все сохранения падают, в логе `column ... does not exist`** — схема базы отстала от
-  `table_columns_and_types` в `SQLTable/sqltable.h` (см. раздел 7).
-- **Поиск по фамилии не находит случай в другом регистре** — база создана без локали
-  `en_US.UTF-8`; создавать базы только через `setup_server.sh` / `add_database.sh`.
+- **Клиент не соединяется** — проверить `host`/`password` в `settings.ini`,
+  затем доступность 5432 с клиентской машины, затем `log_connections = on` в
+  логе PostgreSQL на сервере.
+- **Все сохранения падают, в логе `column ... does not exist`** — схема базы
+  отстала от `table_columns_and_types` (см. раздел «Обновление схемы»).
+- **Поиск по фамилии не находит случай в другом регистре** — база создана без
+  локали `en_US.UTF-8`; создавать базы только через `setup_server.sh` /
+  `add_database.sh`.
+- **Печать не работает** — `DocParser` должен лежать рядом с программой и
+  запускаться из рабочей папки; подробнее — в `BUILD_WINDOWS_RU.md`.

@@ -8,7 +8,7 @@ Qt 6 Widgets/SQL desktop registry for trauma patients. Russian UI, PostgreSQL ba
 - `Common/` — widget auto-collection, MKB dictionaries, doctors/medicines settings, dosage logic
 - `SQLTable/` — the only persistence layer (PostgreSQL via `QPSQL`)
 - `JSON/` — hand-rolled JSON builder/printer that prepares `patient_data.json` for DocParser
-- `server/` — PostgreSQL provisioning and SQLite→PostgreSQL migration (see `server/README.md`)
+- `server/` — PostgreSQL provisioning and legacy migration: `server/debian/` (Debian/Ubuntu), `server/redos/` (RED OS), `server/migration/` (SQLite→PostgreSQL), shared `server/schema.sql` and `server/backup.sh` (see `server/README.md`)
 - `GUI/*.ui` — main form is ~10k lines; edit in Qt Designer, not by hand
 
 ## Build and run
@@ -56,9 +56,10 @@ Qt 6 Widgets/SQL desktop registry for trauma patients. Russian UI, PostgreSQL ba
 
 ## Server
 
-- `server/setup_server.sh` is Debian-only and reads `server/setup.ini` (`DB_PASS`, `DB_NAME`, `DB_USER`). It makes PostgreSQL listen on `0.0.0.0`, allows SSL-only password access from any address (no subnet list — the password is the only gate) and applies `server/schema.sql`.
-- One server hosts one database per hospital department (same role and password; a client picks its base only via `database/name` in `settings.ini`). `pg_hba.conf` gets `hostssl all <user> 0.0.0.0/0`, so a new base needs no config edit; `sudo bash server/add_database.sh <name> [--from <existing>]` creates it (or clones an existing one) and applies `schema.sql`. `--list` shows what exists. Clients stay untouched.
-- Migration: `python3 server/sqlite_to_csv.py <path>/DataBase.db` (stdlib only) generates `cases.csv` + `load_cases.sql`; run the latter with `psql` on a machine with server access.
+- `server/debian/setup_server.sh` and `server/redos/setup_server.sh` read `setup.ini` (`DB_PASS`, `DB_NAME`, `DB_USER`) next to the script. They make PostgreSQL listen on `0.0.0.0`, allow SSL-only password access from any address (no subnet list — the password is the only gate) and apply `../schema.sql`. The Debian script uses apt/locale-gen/ssl-cert/ufw; the RED OS script handles dnf, versioned PostgreSQL (`PG_VERSION`), SELinux labels, firewalld/iptables and generates its own TLS certificate.
+- One server hosts one database per hospital department (same role and password; a client picks its base only via `database/name` in `settings.ini`). `pg_hba.conf` gets `hostssl all <user> 0.0.0.0/0` near the top (RHEL-family configs have earlier `ident` lines for localhost), so a new base needs no config edit; `sudo bash server/{debian,redos}/add_database.sh <name> [--from <existing>]` creates it (or clones an existing one) and applies `schema.sql`. `--list` shows what exists. Clients stay untouched.
+- Migration: `python3 server/migration/sqlite_to_csv.py <path>/DataBase.db` (stdlib only) generates `cases.csv` + `load_cases.sql`; run the latter with `psql` on a machine with server access. Instructions: `server/migration/README.md`.
+- Backups: `server/backup.sh` dumps every department DB with the `pg_dump` matching the server major version (needed for RED OS versioned packages) and keeps 30 days by default.
 - Keep column names lowercase in `schema.sql`; the Qt app adapts case, but SQL comparisons (`ILIKE` search) rely on the DB's `en_US.UTF-8` collation set up by the script.
 
 ## Misc
