@@ -21,7 +21,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
-    font-family: &quot;Comic Sans MS&quot;;
+    font-family: &quot;Noto Sans&quot;;
     background-color: rgb(35, 36, 39); /* Однотонный цвет фона */
     color: #d3d3d3; /* Светлый текст, но не белый */
 }
@@ -162,7 +162,7 @@ QPushButton:focus {
       </property>
       <property name="font">
        <font>
-        <family>Comic Sans MS</family>
+        <family>Noto Sans</family>
         <pointsize>12</pointsize>
        </font>
       </property>
@@ -198,7 +198,7 @@ QPushButton:focus {
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -214,7 +214,7 @@ QPushButton:focus {
            <widget class="QLineEdit" name="Adress">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -245,7 +245,7 @@ QPushButton:focus {
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -267,7 +267,7 @@ QPushButton:focus {
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -284,7 +284,7 @@ QPushButton:focus {
              <widget class="QLabel" name="label_2">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -306,7 +306,7 @@ QPushButton:focus {
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -323,7 +323,7 @@ QPushButton:focus {
              <widget class="QLabel" name="label_3">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -345,7 +345,7 @@ QPushButton:focus {
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -408,7 +408,7 @@ QPushButton:focus {
              <widget class="QLabel" name="label_5">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -424,7 +424,7 @@ QPushButton:focus {
              <widget class="QComboBox" name="AsisstanForm">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -451,7 +451,7 @@ QPushButton:focus {
              <widget class="QLabel" name="label_49">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                 <bold>true</bold>
                </font>
@@ -465,7 +465,7 @@ QPushButton:focus {
              <widget class="QComboBox" name="DoctorName">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -502,7 +502,7 @@ QPushButton:focus {
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -524,7 +524,7 @@ QPushButton:focus {
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -567,7 +567,7 @@ QPushButton:focus {
                <widget class="QLabel" name="label_6">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -589,7 +589,7 @@ QPushButton:focus {
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -638,7 +638,7 @@ QPushButton:focus {
                  <widget class="QLabel" name="label_21">
                   <property name="font">
                    <font>
-                    <family>Comic Sans MS</family>
+                    <family>Noto Sans</family>
                     <pointsize>-1</pointsize>
                    </font>
                   </property>
@@ -654,7 +654,7 @@ QPushButton:focus {
                  <widget class="QComboBox" name="BloudGroup">
                   <property name="font">
                    <font>
-                    <family>Comic Sans MS</family>
+                    <family>Noto Sans</family>
                     <pointsize>-1</pointsize>
                    </font>
                   </property>
@@ -714,7 +714,7 @@ QPushButton:focus {
                <widget class="QLabel" name="label_19">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -730,7 +730,7 @@ QPushButton:focus {
                <widget class="QComboBox" name="KelFactor">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -806,7 +806,7 @@ QPushButton:focus {
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -834,7 +834,7 @@ QPushButton:focus {
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -851,7 +851,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;не нуждается&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="acceptRichText">
@@ -894,7 +894,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -922,7 +922,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -939,7 +939,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="acceptRichText">
@@ -962,7 +962,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   </property>
                   <property name="font">
                    <font>
-                    <family>Comic Sans MS</family>
+                    <family>Noto Sans</family>
                     <pointsize>-1</pointsize>
                    </font>
                   </property>
@@ -990,7 +990,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   </property>
                   <property name="font">
                    <font>
-                    <family>Comic Sans MS</family>
+                    <family>Noto Sans</family>
                     <pointsize>-1</pointsize>
                    </font>
                   </property>
@@ -1023,7 +1023,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1051,7 +1051,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1068,7 +1068,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;нет&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="acceptRichText">
@@ -1099,7 +1099,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1127,7 +1127,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1144,7 +1144,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;нет&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="acceptRichText">
@@ -1175,7 +1175,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1203,7 +1203,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1220,7 +1220,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;нет&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="acceptRichText">
@@ -1251,7 +1251,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1279,7 +1279,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1296,7 +1296,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;нет&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="acceptRichText">
@@ -1339,7 +1339,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -1367,7 +1367,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -1384,7 +1384,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="acceptRichText">
@@ -1412,7 +1412,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -1440,7 +1440,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -1457,7 +1457,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="acceptRichText">
@@ -1488,7 +1488,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -1516,7 +1516,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -1533,7 +1533,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;ребенок от нормально протекавшей беременности и родов. Растёт и развивается соответственно возрасту. Болезнью Боткина не болел. Активного туберкулеза в семье нет. Прививки по календарю. Внутривенные гемотрансфузии не производились. На диспансерном учете не состоит.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="acceptRichText">
@@ -1563,7 +1563,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1591,7 +1591,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1623,7 +1623,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1651,7 +1651,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1716,7 +1716,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1745,7 +1745,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1783,7 +1783,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1812,7 +1812,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1854,7 +1854,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1873,7 +1873,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1898,7 +1898,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1917,7 +1917,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1942,7 +1942,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1955,7 +1955,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLabel" name="label_24">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1974,7 +1974,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1984,7 +1984,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLabel" name="label_25">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2003,7 +2003,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2013,7 +2013,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLabel" name="label_36">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2032,7 +2032,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2068,7 +2068,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2087,7 +2087,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2113,7 +2113,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2135,7 +2135,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLabel" name="label_33">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -2154,7 +2154,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -2199,7 +2199,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2212,7 +2212,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="PatientCondition">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2235,7 +2235,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2248,7 +2248,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="DermaStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2271,7 +2271,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2284,7 +2284,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="LyumfaticStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2307,7 +2307,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2320,7 +2320,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="PerkussionStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2343,7 +2343,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2356,7 +2356,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="AuskultationStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2379,7 +2379,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2392,7 +2392,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="NevrologicStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2415,7 +2415,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2428,7 +2428,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="MeningialStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2451,7 +2451,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2464,7 +2464,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="SlizistStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2487,7 +2487,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2500,7 +2500,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="SkeletStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2523,7 +2523,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2536,7 +2536,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="AbdomenStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2559,7 +2559,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2572,7 +2572,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="BrushinaStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2595,7 +2595,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2608,7 +2608,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="DefecationStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2631,7 +2631,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2644,7 +2644,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="UreaticStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2667,7 +2667,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2680,7 +2680,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="MocheispuskanieStatus">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2751,7 +2751,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -2783,7 +2783,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -2797,7 +2797,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;ОАК, ОАМ, анализы кала на яйца глистов, соскоб на энтеробиоз, коагулограмма&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;Группа крови, Rh фактор, БХ анализ крови для наркоза&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;ЭКГ, HBsAg, HCV, RW&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -2825,7 +2825,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2854,7 +2854,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2898,7 +2898,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -2927,7 +2927,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -2941,7 +2941,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;Согласовано, замечаний и дополнений нет.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="acceptRichText">
@@ -2967,7 +2967,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -2996,7 +2996,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -3015,7 +3015,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;Согласовано, замечаний и дополнений нет.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="acceptRichText">
@@ -3048,7 +3048,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -3140,7 +3140,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3180,7 +3180,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3276,7 +3276,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3311,7 +3311,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3417,7 +3417,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3452,7 +3452,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3558,7 +3558,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3593,7 +3593,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3699,7 +3699,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3734,7 +3734,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3840,7 +3840,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3893,7 +3893,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="PGSText">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3922,7 +3922,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -3975,7 +3975,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="PSSText">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4004,7 +4004,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4057,7 +4057,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="AnatoxinStolText">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4086,7 +4086,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4139,7 +4139,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QComboBox" name="AIGHumanOrAnimal">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4159,7 +4159,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLabel" name="label_240">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4172,7 +4172,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="AIGSerion">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4182,7 +4182,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLabel" name="label_241">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4195,7 +4195,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="AIGtitr">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4205,7 +4205,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLabel" name="label_242">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4224,7 +4224,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4266,7 +4266,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4319,7 +4319,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLabel" name="label_245">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4332,7 +4332,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="KokavSerion">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4342,7 +4342,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLabel" name="label_246">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4361,7 +4361,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4473,7 +4473,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="FisioText1">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4554,7 +4554,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="FisioText2">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4635,7 +4635,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="FisioText3">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4716,7 +4716,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="FisioText4">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -4797,7 +4797,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <widget class="QLineEdit" name="FisioText5">
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -5640,7 +5640,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -5717,7 +5717,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -5746,7 +5746,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -5775,7 +5775,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -5804,7 +5804,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -5833,7 +5833,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -5862,7 +5862,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6044,7 +6044,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6113,7 +6113,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -6209,7 +6209,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -6305,7 +6305,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -6395,7 +6395,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -6461,7 +6461,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6490,7 +6490,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6519,7 +6519,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6548,7 +6548,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6577,7 +6577,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6606,7 +6606,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6635,7 +6635,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6664,7 +6664,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6794,7 +6794,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6823,7 +6823,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6852,7 +6852,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -6881,7 +6881,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -7052,7 +7052,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7190,7 +7190,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7328,7 +7328,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7466,7 +7466,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7550,7 +7550,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLabel" name="label_91">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -7563,7 +7563,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="OperationPlane">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -7585,7 +7585,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7598,7 +7598,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="OperationNumber">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7621,7 +7621,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7640,7 +7640,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7668,7 +7668,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -7687,7 +7687,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -7712,7 +7712,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7731,7 +7731,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7781,7 +7781,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7800,7 +7800,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -7859,7 +7859,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLabel" name="label_90">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -7872,7 +7872,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QTextEdit" name="OperationProtocol">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -7886,7 +7886,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="acceptRichText">
@@ -7912,7 +7912,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -7937,7 +7937,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -7965,7 +7965,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -7990,7 +7990,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8018,7 +8018,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8043,7 +8043,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8106,7 +8106,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8131,7 +8131,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8164,7 +8164,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8189,7 +8189,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8222,7 +8222,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8247,7 +8247,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8290,7 +8290,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8315,7 +8315,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8417,7 +8417,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8442,7 +8442,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8484,7 +8484,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8509,7 +8509,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8551,7 +8551,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8617,7 +8617,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8644,7 +8644,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   </property>
                   <property name="font">
                    <font>
-                    <family>Comic Sans MS</family>
+                    <family>Noto Sans</family>
                     <pointsize>-1</pointsize>
                    </font>
                   </property>
@@ -8695,7 +8695,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QCheckBox" name="AntibioticProfilaction">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -8733,7 +8733,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -8752,7 +8752,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -8792,7 +8792,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8817,7 +8817,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8845,7 +8845,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8870,7 +8870,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8898,7 +8898,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8923,7 +8923,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -8986,7 +8986,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9011,7 +9011,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9044,7 +9044,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9069,7 +9069,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9102,7 +9102,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9127,7 +9127,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9164,7 +9164,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9189,7 +9189,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9290,7 +9290,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9315,7 +9315,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9351,7 +9351,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9376,7 +9376,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9412,7 +9412,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9472,7 +9472,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="font">
                  <font>
-                  <family>Comic Sans MS</family>
+                  <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
@@ -9499,7 +9499,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   </property>
                   <property name="font">
                    <font>
-                    <family>Comic Sans MS</family>
+                    <family>Noto Sans</family>
                     <pointsize>-1</pointsize>
                    </font>
                   </property>
@@ -9550,7 +9550,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QCheckBox" name="AntibioticProfilaction2">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -9580,7 +9580,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -9593,7 +9593,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
              <widget class="QLineEdit" name="OperationNumber2">
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -9616,7 +9616,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -9635,7 +9635,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -9681,7 +9681,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -9737,7 +9737,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="font">
                <font>
-                <family>Comic Sans MS</family>
+                <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -9795,7 +9795,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -9808,7 +9808,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="OperationPlane2">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -9822,7 +9822,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLabel" name="label_110">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -9835,7 +9835,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QTextEdit" name="OperationProtocol2">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -9849,7 +9849,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="acceptRichText">
@@ -9889,7 +9889,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           </property>
           <property name="font">
            <font>
-            <family>Comic Sans MS</family>
+            <family>Noto Sans</family>
             <pointsize>-1</pointsize>
            </font>
           </property>
@@ -9903,7 +9903,7 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16px; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;Наблюдение в поликлинике по месту жительства. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="acceptRichText">
@@ -9923,7 +9923,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -9936,7 +9936,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="PerevyazkiText">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -9959,7 +9959,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -9972,7 +9972,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="SuturesText">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -9995,7 +9995,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10008,7 +10008,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="GipsovayaImmobilizaciyaText">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10031,7 +10031,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10044,7 +10044,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="KontrolnayaRgrText">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10067,7 +10067,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10080,7 +10080,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="UdalenieSpicText">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10103,7 +10103,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10116,7 +10116,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="UdalenieMetalloconstrukciyText">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10139,7 +10139,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10152,7 +10152,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="OsvobojdenieOtFisriText">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10175,7 +10175,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10188,7 +10188,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="DomashniyRejimText">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10211,7 +10211,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -10224,7 +10224,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <widget class="QLineEdit" name="PrivivochniyAnamnesText">
             <property name="font">
              <font>
-              <family>Comic Sans MS</family>
+              <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
             </property>

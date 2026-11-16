@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
-	font-family: &quot;Comic Sans MS&quot;;
+	font-family: &quot;Noto Sans&quot;;
     background-color: rgb(35, 36, 39); /* Однотонный цвет фона */
     color: #d3d3d3; /* Светлый текст, но не белый */
 }
