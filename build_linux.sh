@@ -2,27 +2,31 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+BUILD_LINUX="${REPO_ROOT}/build-linux"
+DIST_LINUX="${REPO_ROOT}/dist-linux"
+CLIENT="${REPO_ROOT}/client"
+
 if ! command -v qmake6 >/dev/null; then
     echo "qmake6 not found. Install Qt 6 development packages first." >&2
     exit 1
 fi
 
-mkdir -p build-linux
+mkdir -p ${BUILD_LINUX}
 (
-    cd build-linux
-    qmake6 ../PatientBase.pro CONFIG+=release
+    cd ${BUILD_LINUX}
+    qmake6 ${REPO_ROOT}/client/PatientBase.pro CONFIG+=release
     make -j"$(nproc)"
 )
 
-DIST="dist-linux"
-rm -rf "$DIST"
-mkdir -p "$DIST/Output/ALL_HYSTORY"
-cp build-linux/PatientBase "$DIST/"
-cp DocParser.bin settings.ini "$DIST/"
-cp -r Sources_files шаблоны_основных_документов "$DIST/"
-chmod +x "$DIST/DocParser.bin"
+rm -rf "$DIST_LINUX"
+mkdir -p "$DIST_LINUX/Output/ALL_HYSTORY"
+cp ${BUILD_LINUX}/PatientBase "$DIST_LINUX/"
+cp ${CLIENT}/DocParser.bin ${CLIENT}/settings.ini "$DIST_LINUX/"
+cp -r ${CLIENT}/Sources_files ${CLIENT}/шаблоны_основных_документов "$DIST_LINUX/"
+chmod +x "$DIST_LINUX/DocParser.bin"
 
 echo
-echo "Built: $DIST/PatientBase"
-echo "Edit $DIST/settings.ini (host/user/password), then run:"
-echo "  cd $DIST && ./PatientBase"
+echo "Built: $DIST_LINUX/PatientBase"
+echo "Edit $DIST_LINUX/settings.ini (host/user/password), then run:"
+echo "  cd $DIST_LINUX && ./PatientBase"

@@ -1,0 +1,9 @@
+build windows
+
+compare old version to new and make a list what should be tested
+
+Change all russian files/dirs to english (if necessery)
+
+make documentation and scripts easier
+
+migrate docparser to this repo and build it here
