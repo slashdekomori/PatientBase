@@ -1,8 +1,9 @@
 <#
 Builds PatientBase for Windows 10 (x64) and produces a self-contained folder + zip.
 
-Run from a Qt command prompt, e.g. "Qt 6.x.x (MSVC 2022 64-bit)", so qmake, nmake
-and windeployqt are on PATH:
+Run from a Qt command prompt (e.g. "Qt 6.x (MSVC 2022 64-bit)" or
+"Qt 6.x (llvm-mingw 17.0.6 64-bit)"), so qmake, the make tool and windeployqt are
+on PATH:
 
     powershell -ExecutionPolicy Bypass -File build_windows.ps1 -PgBin "C:\Program Files\PostgreSQL\16\bin"
 
@@ -61,8 +62,32 @@ if (-not (Test-Path $tpl)) { throw "Templates folder not found: $tpl (check the 
 Copy-Item $tpl $Dist -Recurse
 
 # --- Qt runtime + plugins (platforms, sqldrivers/qsqlpsql, ...) ----------
-windeployqt --release --no-translations --compiler-runtime (Join-Path $Dist "PatientBase.exe")
-if ($LASTEXITCODE -ne 0) { throw "windeployqt failed" }
+# LLVM MinGW (win32-clang-g++) needs different windeployqt flags:
+#  - --compiler-runtime is not implemented for clang (windeployqt exits with an error)
+#  - --release makes Qt misdetect clang DLLs as debug, so no platform plugin is found
+$xspec = ""
+try { $xspec = ((& qmake -query QMAKE_XSPEC 2>$null) -join '').Trim() } catch {}
+$clangMinGw = $xspec -match 'clang.*g\+\+'
+if ($clangMinGw) {
+    & windeployqt --no-translations (Join-Path $Dist "PatientBase.exe")
+    if ($LASTEXITCODE -ne 0) { throw "windeployqt failed" }
+
+    # windeployqt does not bundle the compiler runtime for clang: do it ourselves
+    $clang = Get-Command "clang++" -ErrorAction SilentlyContinue
+    if ($clang) {
+        $tcBin = Split-Path $clang.Source -Parent
+        foreach ($dll in "libc++.dll", "libunwind.dll", "libwinpthread-1.dll") {
+            $src = Join-Path $tcBin $dll
+            if (Test-Path $src) { Copy-Item $src $Dist -Force }
+            else { Write-Warning "Compiler runtime $dll not found in $tcBin" }
+        }
+    } else {
+        Write-Warning "clang++ not found in PATH: compiler runtime (libc++/libunwind) NOT bundled."
+    }
+} else {
+    & windeployqt --release --no-translations --compiler-runtime (Join-Path $Dist "PatientBase.exe")
+    if ($LASTEXITCODE -ne 0) { throw "windeployqt failed" }
+}
 
 if (-not (Test-Path (Join-Path $Dist "sqldrivers\qsqlpsql.dll"))) {
     Write-Warning "sqldrivers\qsqlpsql.dll was not deployed - the Qt kit may lack the PostgreSQL driver."
