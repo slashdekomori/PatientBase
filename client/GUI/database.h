@@ -104,6 +104,7 @@ private:
     // SearchWindow search_window_;
     AddAnalisesWindow dop_analises_window;
     PrintWindow* print_window = nullptr;
+    SearchWindow* search_window = nullptr;
 
     //дополнительные переменные==========================================
     std::optional<int> patient_id_ = std::nullopt;

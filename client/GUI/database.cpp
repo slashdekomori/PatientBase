@@ -9,10 +9,10 @@
 DataBase::DataBase(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::DataBase)
-    // , search_window_(this, data_base_, mkb_map_)
     , data_base_(this)
-    , print_window(new PrintWindow(this, widget_handler_))
     , diaries_parser_(widget_handler_)
+    , print_window(new PrintWindow(this, widget_handler_))
+    , search_window(new SearchWindow(this, data_base_, mkb_map_))
 
 {
     ui->setupUi(this);
@@ -163,9 +163,7 @@ void DataBase::SearchButtonClicked(){
             SaveButtonClicked();
         }
     }
-
-    SearchWindow search_window(this, data_base_, mkb_map_);
-    search_window.exec();
+    search_window->show();
 
 }
 
