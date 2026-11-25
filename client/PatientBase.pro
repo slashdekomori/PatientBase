@@ -13,11 +13,13 @@ win32: RC_ICONS = icon.ico
 
 SOURCES += \
     Common/common.cpp \
+    Common/departmentinfostorage.cpp \
     Common/diariesparser.cpp \
     GUI/addanaliseswindow.cpp \
     GUI/database.cpp \
     GUI/printwindow.cpp \
     GUI/searchwindow.cpp \
+    GUI/settingswindow.cpp \
     JSON/json.cpp \
     JSON/json_builder.cpp \
     JSON/json_printer.cpp \
@@ -26,11 +28,13 @@ SOURCES += \
 
 HEADERS += \
     Common/common.h \
+    Common/departmentinfostorage.h \
     Common/diariesparser.h \
     GUI/addanaliseswindow.h \
     GUI/database.h \
     GUI/printwindow.h \
     GUI/searchwindow.h \
+    GUI/settingswindow.h \
     JSON/json.h \
     JSON/json_builder.h \
     JSON/json_printer.h \
@@ -40,7 +44,8 @@ FORMS += \
     GUI/addanaliseswindow.ui \
     GUI/database.ui \
     GUI/printwindow.ui \
-    GUI/searchwindow.ui
+    GUI/searchwindow.ui \
+    GUI/settingswindow.ui
 
 
 

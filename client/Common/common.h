@@ -84,11 +84,14 @@ public:
     ~SettingsSetter();
 
     void SetSettings(const std::initializer_list<std::pair<QComboBox *, QString> > &args);
+    QString GetDictionaryValue(const QString& setting_name, const QString& key) const;
 
 
 private:
     std::unordered_map<QString, QStringList> settings_map;
+    std::unordered_map<QString, std::unordered_map<QString, QString> > dictionary_map_;
     void SetSettingsByName(const QJsonObject& json, const QString& setting_name);
+    void SetDictionaryByName(const QJsonObject& json, const QString& setting_name);
     void SetDoctorsNames(QComboBox* doctors_names);
 };
 

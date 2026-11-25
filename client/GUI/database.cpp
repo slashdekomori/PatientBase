@@ -3,6 +3,7 @@
 #include "ui_addanaliseswindow.h"
 #include "ui_database.h"
 
+#include <QAction>
 #include <QCompleter>
 #include <QDate>
 #include <QSignalBlocker>
@@ -147,6 +148,23 @@ void DataBase::ConnectAll() {
     connect(ui->PatientFIO, &QLineEdit::editingFinished, this, &DataBase::ChangeNameToCorrect);
     ConnectDopAnalisesWidgetsToDopAnalisesButton();
     ConnectDopAnalisesComboBoxesToDescriptionParser();
+
+    for (int i = 1; i <= 5; ++i) {
+        if (auto* combo = findChild<QComboBox*>("ManipulationVariant" + QString::number(i))) {
+            connect(combo, &QComboBox::currentTextChanged, this, [this]() {
+                ParseDictionaryDescription("манипуляции после поступления",
+                                           "ManipulationVariant", "ManipulationText");
+            });
+        }
+    }
+    for (int i = 1; i <= 4; ++i) {
+        if (auto* combo = findChild<QComboBox*>("ConsultationVariant" + QString::number(i))) {
+            connect(combo, &QComboBox::currentTextChanged, this, [this]() {
+                ParseDictionaryDescription("консультации",
+                                           "ConsultationVariant", "ConsultationText");
+            });
+        }
+    }
     connect(ui->make_copy_action, &QAction::triggered, this, &DataBase::on_copy_triggered);
 }
 
@@ -167,6 +185,7 @@ void DataBase::ConnectButtons() {
     connect(ui->SaveButton, &QPushButton::clicked, this, &DataBase::SaveButtonClicked);
     connect(ui->SearchButton, &QPushButton::clicked, this, &DataBase::SearchButtonClicked);
     connect(ui->AddAnalisesButton, &QPushButton::clicked, this, &DataBase::AddAnalisesButtonClicked);
+    connect(ui->settings_action, &QAction::triggered, this, &DataBase::OpenSettingsWindow);
 }
 
 void DataBase::SetSettings() {
@@ -202,6 +221,18 @@ void DataBase::SetSettings() {
     for (int i = 1; i <= Constants::NUMBER_OF_DOP_OBSLEDOVANIYA; i++) {
         QString index = "DopObsledovanieVariant" + QString::number(i);
         settings_setter_.SetSettings({{dop_analises_window.ui->groupBox->findChild<QComboBox*>(index), "обследования"}});
+    }
+    for (int i = 1; i <= 5; ++i) {
+        QString index = "ManipulationVariant" + QString::number(i);
+        auto* combo = findChild<QComboBox*>(index);
+        QSignalBlocker blocker(combo);
+        settings_setter_.SetSettings({{combo, "манипуляции после поступления"}});
+    }
+    for (int i = 1; i <= 4; ++i) {
+        QString index = "ConsultationVariant" + QString::number(i);
+        auto* combo = findChild<QComboBox*>(index);
+        QSignalBlocker blocker(combo);
+        settings_setter_.SetSettings({{combo, "консультации"}});
     }
 }
 
@@ -634,10 +665,28 @@ void DataBase::ChangeDopAnalisesBotton() {
 void DataBase::ParseDescriptionToDopAnalises()
 {
     QComboBox* combo_box = qobject_cast<QComboBox*>(sender());
-    QString index = combo_box->objectName()[combo_box->objectName().length() - 1];
-    if (combo_box->currentText().trimmed() == "коагулограмма") {
-        auto dop_analises_text = dop_analises_window.findChild<QTextEdit*>("DopObsledovanieText" + index);
-        dop_analises_text->setText("МНО 1.0; тромбиновое время 19 сек; ПТИ 81 %; АПТВ 33 сек; фибриноген 3.0 г/л");
+    if (!combo_box) {
+        return;
+    }
+
+    const QString object_name = combo_box->objectName();
+    QString suffix;
+    for (int i = object_name.length() - 1; i >= 0 && object_name[i].isDigit(); --i) {
+        suffix.prepend(object_name[i]);
+    }
+    if (suffix.isEmpty()) {
+        return;
+    }
+
+    QTextEdit* text_edit = dop_analises_window.findChild<QTextEdit*>("DopObsledovanieText" + suffix);
+    if (!text_edit) {
+        return;
+    }
+
+    const QString description = settings_setter_.GetDictionaryValue("обследования",
+                                                                     combo_box->currentText().trimmed());
+    if (!description.isEmpty()) {
+        text_edit->setText(description);
     }
 }
 
@@ -666,6 +715,9 @@ void DataBase::ConnectDopAnalisesComboBoxesToDescriptionParser()
         auto combo_box = dop_analises_window.findChild<QComboBox*>("DopObsledovanieVariant" + QString::number(i));
         connect(combo_box, &QComboBox::currentTextChanged, this, &DataBase::ParseDescriptionToDopAnalises);
     }
+    // Динамические строки создаются уже после запуска приложения.
+    connect(&dop_analises_window, &AddAnalisesWindow::VariantComboCreated,
+            this, &DataBase::ParseDescriptionToDopAnalises);
 }
 
 
@@ -679,18 +731,48 @@ void DataBase::on_OperationBegin2_editingFinished() {
 }
 
 
-void DataBase::on_ManipulationVariant1_currentTextChanged(const QString &arg1)
+void DataBase::ParseDictionaryDescription(const QString& setting_name,
+                                          const QString& variant_prefix,
+                                          const QString& text_prefix)
 {
-    if (arg1 == "закрытая репозиция") {
-        ui->ManipulationText1->setText("Произведена попытка закрытой репозиции " + GetDiagnosisContext("перелом") + ", пальпаторно и визуально ось конечности ровная, наложена гипсовая иммобилизация");
-    } else if (arg1 == "пункция") {
-        ui->ManipulationAnestesiya1->setCurrentIndex(1);
-        ui->ManipulationText1->setText("Под местной анестезией 0,5 % раствором новокаина произведена пункция коленного сустава, аспирировано 100 мл геморрагического отделяемого");
-    } else if (arg1 == "вправление вывиха") {
-        ui->ManipulationText1->setText(GetDiagnosisContext("вывих"));
-    } else if (arg1 == "закрытая репозиция, наложение скелетного вытяжения") {
-        ui->ManipulationText1->setText("После трехкратной обработки операционного поля спиртовыми растворами антисептиков заведена спица Киршнера через");
+    QComboBox* combo_box = qobject_cast<QComboBox*>(sender());
+    if (!combo_box) {
+        return;
     }
+
+    const QString object_name = combo_box->objectName();
+    QString suffix;
+    for (int i = object_name.length() - 1; i >= 0 && object_name[i].isDigit(); --i) {
+        suffix.prepend(object_name[i]);
+    }
+    if (suffix.isEmpty()) {
+        return;
+    }
+
+    QTextEdit* text_edit = findChild<QTextEdit*>(text_prefix + suffix);
+    if (!text_edit) {
+        return;
+    }
+
+    QString description = settings_setter_.GetDictionaryValue(setting_name,
+                                                               combo_box->currentText().trimmed());
+    if (description.isEmpty()) {
+        return;
+    }
+
+    description.replace("{перелом}", GetDiagnosisContext("перелом"));
+    description.replace("{вывих}", GetDiagnosisContext("вывих"));
+
+    if (description.contains("Под местной анестезией")) {
+        if (QComboBox* anesthesia = findChild<QComboBox*>("ManipulationAnestesiya" + suffix)) {
+            const int index = anesthesia->findText("под местной анестезией");
+            if (index >= 0) {
+                anesthesia->setCurrentIndex(index);
+            }
+        }
+    }
+
+    text_edit->setText(description);
 }
 
 
@@ -698,6 +780,14 @@ void DataBase::AddAnalisesButtonClicked() {
     dop_analises_window.show();
     dop_analises_window.raise();
     dop_analises_window.activateWindow();
+}
+
+
+void DataBase::OpenSettingsWindow() {
+    // Создаём окно заново при каждом открытии, чтобы отмена не оставляла
+    // несохранённые изменения в повторно открытом диалоге.
+    SettingsWindow window(this);
+    window.exec();
 }
 
 

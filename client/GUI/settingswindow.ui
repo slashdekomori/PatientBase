@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsWindow</class>
+ <widget class="QDialog" name="SettingsWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Настройки</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="commonTab">
+      <attribute name="title">
+       <string>Общее</string>
+      </attribute>
+      <layout class="QFormLayout" name="commonLayout">
+       <property name="labelAlignment">
+        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="listsTab">
+      <attribute name="title">
+       <string>Списки</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="listsLayout">
+       <item>
+        <widget class="QComboBox" name="listKeyCombo"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="listButtonsLayout">
+         <item>
+          <widget class="QPushButton" name="AddListButton">
+           <property name="text">
+            <string>Добавить</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="RemoveListButton">
+           <property name="text">
+            <string>Удалить</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="MoveUpButton">
+           <property name="text">
+            <string>↑</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="MoveDownButton">
+           <property name="text">
+            <string>↓</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="listButtonsSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QListWidget" name="listWidget">
+         <property name="editTriggers">
+          <set>QAbstractItemView::EditTrigger::DoubleClicked|QAbstractItemView::EditTrigger::EditKeyPressed</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="medicinesTab">
+      <attribute name="title">
+       <string>Дополнительные препараты</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="medicinesLayout">
+       <item>
+        <widget class="QTableWidget" name="medicineTable">
+         <property name="columnCount">
+          <number>2</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>Препарат</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Описание</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="medicineButtonsLayout">
+         <item>
+          <widget class="QPushButton" name="AddMedicineButton">
+           <property name="text">
+            <string>Добавить препарат</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="RemoveMedicineButton">
+           <property name="text">
+            <string>Удалить препарат</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="medicineButtonsSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="examinationsTab">
+      <attribute name="title">
+       <string>Обследования</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="examinationsLayout">
+       <item>
+        <widget class="QTableWidget" name="examinationTable">
+         <property name="columnCount">
+          <number>2</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>Обследование</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Типичное описание</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="examinationButtonsLayout">
+         <item>
+          <widget class="QPushButton" name="AddExaminationButton">
+           <property name="text">
+            <string>Добавить обследование</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="RemoveExaminationButton">
+           <property name="text">
+            <string>Удалить обследование</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="examinationButtonsSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="consultationsTab">
+      <attribute name="title">
+       <string>Консультации</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="consultationsLayout">
+       <item>
+        <widget class="QTableWidget" name="consultationTable">
+         <property name="columnCount">
+          <number>2</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>Консультация</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Типичное описание</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="consultationButtonsLayout">
+         <item>
+          <widget class="QPushButton" name="AddConsultationButton">
+           <property name="text">
+            <string>Добавить консультацию</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="RemoveConsultationButton">
+           <property name="text">
+            <string>Удалить консультацию</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="consultationButtonsSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="manipulationsTab">
+      <attribute name="title">
+       <string>Манипуляции после поступления</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="manipulationsLayout">
+       <item>
+        <widget class="QTableWidget" name="manipulationTable">
+         <property name="columnCount">
+          <number>2</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>Манипуляция</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Типичное описание</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="manipulationButtonsLayout">
+         <item>
+          <widget class="QPushButton" name="AddManipulationButton">
+           <property name="text">
+            <string>Добавить манипуляцию</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="RemoveManipulationButton">
+           <property name="text">
+            <string>Удалить манипуляцию</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="manipulationButtonsSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="statusLabel">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonLayout">
+     <item>
+      <spacer name="buttonSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="SaveButton">
+       <property name="text">
+        <string>Сохранить</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="CancelButton">
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

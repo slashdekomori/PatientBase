@@ -294,6 +294,8 @@ AddAnalisesWindow::RowWidgets AddAnalisesWindow::CreateExtraRow()
     connect(row.text, &QTextEdit::textChanged, this, [this]() { NotifyRowsChanged(); });
     connect(row.remove, &QPushButton::clicked, this, &AddAnalisesWindow::RemoveRowButtonClicked);
 
+    emit VariantComboCreated(row.variant);
+
     return row;
 }
 

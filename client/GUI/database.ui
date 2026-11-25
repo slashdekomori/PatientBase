@@ -3089,26 +3089,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <string/>
                  </property>
                 </item>
-                <item>
-                 <property name="text">
-                  <string>закрытая репозиция</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>пункция</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>вправление вывиха</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>наложение скелетного вытяжения</string>
-                 </property>
-                </item>
                </widget>
               </item>
               <item>
@@ -3223,26 +3203,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item>
                  <property name="text">
                   <string/>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>закрытая репозиция</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>пункция</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>вправление вывиха</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>закрытая репозиция, наложение скелетного вытяжения</string>
                  </property>
                 </item>
                </widget>
@@ -3366,26 +3326,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <string/>
                  </property>
                 </item>
-                <item>
-                 <property name="text">
-                  <string>закрытая репозиция</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>пункция</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>вправление вывиха</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>закрытая репозиция, наложение скелетного вытяжения</string>
-                 </property>
-                </item>
                </widget>
               </item>
               <item row="0" column="1">
@@ -3507,26 +3447,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <string/>
                  </property>
                 </item>
-                <item>
-                 <property name="text">
-                  <string>закрытая репозиция</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>пункция</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>вправление вывиха</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>закрытая репозиция, наложение скелетного вытяжения</string>
-                 </property>
-                </item>
                </widget>
               </item>
               <item>
@@ -3646,26 +3566,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item>
                  <property name="text">
                   <string/>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>закрытая репозиция</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>пункция</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>вправление вывиха</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>закрытая репозиция, наложение скелетного вытяжения</string>
                  </property>
                 </item>
                </widget>
@@ -6994,46 +6894,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <string/>
                </property>
               </item>
-              <item>
-               <property name="text">
-                <string>Консультация хирурга</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация офтальмолога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация педиатра</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация невролога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация ЛОР врача</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация эндокринолога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация онколога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация с федеральным центром</string>
-               </property>
-              </item>
              </widget>
             </item>
             <item>
@@ -7130,46 +6990,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <property name="text">
                 <string/>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация хирурга</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация офтальмолога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация педиатра</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация невролога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация ЛОР врача</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация эндокринолога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация онколога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация с федеральным центром</string>
                </property>
               </item>
              </widget>
@@ -7270,46 +7090,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <string/>
                </property>
               </item>
-              <item>
-               <property name="text">
-                <string>Консультация хирурга</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация офтальмолога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация педиатра</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация невролога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация ЛОР врача</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация эндокринолога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация онколога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация с федеральным центром</string>
-               </property>
-              </item>
              </widget>
             </item>
             <item>
@@ -7406,46 +7186,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <property name="text">
                 <string/>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация хирурга</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация офтальмолога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация педиатра</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация невролога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация ЛОР врача</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация эндокринолога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация онколога</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Консультация с федеральным центром</string>
                </property>
               </item>
              </widget>
@@ -10281,6 +10021,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <property name="title">
      <string>дополнительно</string>
     </property>
+    <addaction name="settings_action"/>
     <addaction name="make_copy_action"/>
    </widget>
    <addaction name="menu"/>
@@ -10290,6 +10031,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <action name="action">
    <property name="text">
     <string>о программе</string>
+   </property>
+  </action>
+  <action name="settings_action">
+   <property name="text">
+    <string>Настройки</string>
    </property>
   </action>
   <action name="make_copy_action">

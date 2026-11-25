@@ -331,6 +331,34 @@ void SettingsSetter::SetSettingsByName(const QJsonObject& json, const QString& s
     }
 }
 
+void SettingsSetter::SetDictionaryByName(const QJsonObject& json, const QString& setting_name)
+{
+    if (!json.contains(setting_name) || !json[setting_name].isObject()) {
+        return;
+    }
+
+    const QJsonObject dictionary = json[setting_name].toObject();
+    std::unordered_map<QString, QString> values;
+    for (const QString& key : dictionary.keys()) {
+        values[key] = dictionary.value(key).toString();
+    }
+    dictionary_map_[setting_name] = std::move(values);
+}
+
+QString SettingsSetter::GetDictionaryValue(const QString& setting_name, const QString& key) const
+{
+    const auto setting_it = dictionary_map_.find(setting_name);
+    if (setting_it == dictionary_map_.end()) {
+        return QString();
+    }
+
+    const auto value_it = setting_it->second.find(key);
+    if (value_it == setting_it->second.end()) {
+        return QString();
+    }
+    return value_it->second;
+}
+
 SettingsSetter::SettingsSetter() {
     QDir dir(QCoreApplication::applicationDirPath());
     QString settings_dir = dir.filePath("Sources_files/DepartmentInfo.json");
@@ -364,8 +392,13 @@ SettingsSetter::SettingsSetter() {
     SetSettingsByName(jsonObj, "медицинское оборудование");
     SetSettingsByName(jsonObj, "обследования");
     SetSettingsByName(jsonObj, "физиопроцедуры");
+    SetSettingsByName(jsonObj, "консультации");
+    SetSettingsByName(jsonObj, "манипуляции после поступления");
 
-
+    SetDictionaryByName(jsonObj, "лекарственные препараты дополнительно");
+    SetDictionaryByName(jsonObj, "обследования");
+    SetDictionaryByName(jsonObj, "консультации");
+    SetDictionaryByName(jsonObj, "манипуляции после поступления");
 }
 
 

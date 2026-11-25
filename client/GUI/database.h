@@ -9,6 +9,7 @@
 #include "Common/common.h"
 #include "Common/diariesparser.h"
 #include "GUI/addanaliseswindow.h"
+#include "GUI/settingswindow.h"
 #include "qevent.h"
 #include "searchwindow.h"
 #include "printwindow.h"
@@ -48,7 +49,9 @@ private slots:
     void FillVitalIfKnownDateofBirth();
     void on_OperationBegin_editingFinished();
     void on_OperationBegin2_editingFinished();
-    void on_ManipulationVariant1_currentTextChanged(const QString &arg1);
+    void ParseDictionaryDescription(const QString& setting_name,
+                                    const QString& variant_prefix,
+                                    const QString& text_prefix);
     void UpdateCheckboxIfEditingText();
     void IsDataChangedFromLastPrint();
     void ChangeNameToCorrect();
@@ -64,6 +67,7 @@ private slots:
     void on_Weight_editingFinished();
     void on_action_triggered();
     void on_copy_triggered();
+    void OpenSettingsWindow();
 
     // void on_ParseDiaries_button_clicked();
 

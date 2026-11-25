@@ -44,6 +44,7 @@ public:
 
 signals:
     void RowsChanged();
+    void VariantComboCreated(QComboBox* combo);
 
 private slots:
     void SaveButtonClicked();
