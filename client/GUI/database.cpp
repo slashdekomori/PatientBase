@@ -4,6 +4,76 @@
 #include "ui_database.h"
 
 #include <QCompleter>
+#include <QDate>
+#include <QSignalBlocker>
+
+
+namespace {
+
+QDate DateFromVariant(const QVariant& value)
+{
+    QDate date = value.toDate();
+    if (date.isValid()) {
+        return date;
+    }
+
+    const QString text = value.toString().trimmed();
+    date = QDate::fromString(text, "yyyy-MM-dd");
+    if (date.isValid()) {
+        return date;
+    }
+    return QDate::fromString(text, "dd.MM.yyyy");
+}
+
+QVector<DopObservationRow> BuildDopObservationRows(const std::unordered_map<QString, QVariant>& data)
+{
+    QVector<DopObservationRow> rows;
+
+    auto append_unique = [&rows](const DopObservationRow& row) {
+        if (row.isEmpty()) {
+            return;
+        }
+        const QString date_key = row.date.toString("dd.MM.yyyy");
+        for (const auto& existing : rows) {
+            if (existing.date.toString("dd.MM.yyyy") == date_key &&
+                existing.variant.trimmed() == row.variant.trimmed() &&
+                existing.text.trimmed() == row.text.trimmed()) {
+                return;
+            }
+        }
+        rows.push_back(row);
+    };
+
+    for (int i = 1; i <= Constants::NUMBER_OF_DOP_OBSLEDOVANIYA; ++i) {
+        const QString suffix = QString::number(i);
+        const auto variant_it = data.find("DopObsledovanieVariant" + suffix);
+        const auto text_it = data.find("DopObsledovanieText" + suffix);
+        const auto date_it = data.find("DopObsledovanieDate" + suffix);
+        if (variant_it == data.end() && text_it == data.end() && date_it == data.end()) {
+            continue;
+        }
+
+        DopObservationRow row;
+        row.variant = variant_it == data.end() ? QString() : variant_it->second.toString().trimmed();
+        row.text = text_it == data.end() ? QString() : text_it->second.toString().trimmed();
+        row.date = date_it == data.end() ? QDate::currentDate() : DateFromVariant(date_it->second);
+        if (!row.date.isValid()) {
+            row.date = QDate::currentDate();
+        }
+        append_unique(row);
+    }
+
+    const auto json_it = data.find("DopObsledovaniyaJson");
+    if (json_it != data.end()) {
+        for (const auto& row : AddAnalisesWindow::ParseRowsJson(json_it->second.toString())) {
+            append_unique(row);
+        }
+    }
+
+    return rows;
+}
+
+} // namespace
 
 
 DataBase::DataBase(QWidget *parent)
@@ -18,9 +88,27 @@ DataBase::DataBase(QWidget *parent)
     ui->setupUi(this);
     ui->TabWidget->setCurrentIndex(0);
     widget_handler_.CollectWidgetFromTab(ui->TabWidget);
+    // После появления QScrollArea штатные поля допобследований и дополнительные
+    // колонки ОАК/ОАМ/БХ живут внутри scrollAreaWidgetContents. CollectWidgets()
+    // не заходит в обычный QWidget, поэтому собираем их отдельно.
+    widget_handler_.AddWidgetsFromWindow(dop_analises_window.ui->scrollAreaWidgetContents,
+                                         "Дополнительные анализы");
+    // groupBox нужен для скрытого поля DopObsledovaniyaJson, которое лежит
+    // непосредственно в groupBoxLayout.
     widget_handler_.AddWidgetsFromWindow(dop_analises_window.ui->groupBox, "Дополнительные анализы");
     ConnectAll();
     SetSettings();
+
+    QStringList observation_items;
+    if (auto combo = dop_analises_window.ui->groupBox->findChild<QComboBox*>("DopObsledovanieVariant1")) {
+        for (int i = 0; i < combo->count(); ++i) {
+            const QString item = combo->itemText(i).trimmed();
+            if (!item.isEmpty() && !observation_items.contains(item)) {
+                observation_items.push_back(item);
+            }
+        }
+    }
+    dop_analises_window.SetVariantItems(observation_items);
     // если вносились изменения в графические интерфейс - получаем все значения полей и их тип для формирования таблицы
     // widget_handler_.Foo();
 }
@@ -120,6 +208,15 @@ void DataBase::SetSettings() {
 void DataBase::FillForms(std::unordered_map<QString, QVariant>&& widgets_data) {
 
     widget_handler_.FillForms(std::move(widgets_data));
+
+    const auto dop_rows = BuildDopObservationRows(widgets_data);
+    if (auto json_field = dop_analises_window.ui->DopObsledovaniyaJson) {
+        QSignalBlocker json_blocker(json_field);
+        dop_analises_window.SetRows(dop_rows);
+    } else {
+        dop_analises_window.SetRows(dop_rows);
+    }
+
     auto pos_id = widgets_data.find("id");
     if (pos_id != widgets_data.end()) {
         patient_id_ = widgets_data.at("id").toInt();
@@ -292,6 +389,12 @@ void DataBase::ChangeDiagnosisText(QTextEdit* diagnosis_text) {
 
 void DataBase::CheckDopAnalises()
 {
+    if (!dop_analises_window.GetRows().isEmpty()) {
+        ui->AddAnalisesButton->setStyleSheet("border-bottom: 3px solid orange;");
+        ui->AddAnalisesButton->setText("Есть доп. обследования");
+        return;
+    }
+
     for(const auto& widget : widget_handler_.GetWidgetsFromTabName("Дополнительные анализы")){
         if (auto check_box = qobject_cast<QCheckBox*>(widget)) {
             if (check_box->isChecked()) {
@@ -402,6 +505,9 @@ void DataBase::ConnectDopAnalisesWidgetsToDopAnalisesButton()
             connect(combo_box, &QComboBox::editTextChanged, this, &DataBase::ChangeDopAnalisesBotton);
         }
     }
+
+    connect(&dop_analises_window, &AddAnalisesWindow::RowsChanged,
+            this, &DataBase::CheckDopAnalises);
 }
 
 const QString DataBase::GetDiagnosisContext(const QString& context) const {
@@ -556,7 +662,7 @@ void DataBase::ConnectWidgetsToCheckIfDataChanged(){
 
 void DataBase::ConnectDopAnalisesComboBoxesToDescriptionParser()
 {
-    for (int i = 1; i < Constants::NUMBER_OF_DOP_OBSLEDOVANIYA; i++) {
+    for (int i = 1; i <= Constants::NUMBER_OF_DOP_OBSLEDOVANIYA; i++) {
         auto combo_box = dop_analises_window.findChild<QComboBox*>("DopObsledovanieVariant" + QString::number(i));
         connect(combo_box, &QComboBox::currentTextChanged, this, &DataBase::ParseDescriptionToDopAnalises);
     }

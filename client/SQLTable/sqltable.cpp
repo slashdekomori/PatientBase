@@ -90,16 +90,49 @@ bool SQLTable::OpenConnection() {
     // чтобы программа не висела минуту, если сервер недоступен
     db_.setConnectOptions("connect_timeout=5");
 
-    if (db_.open()) {
-        return true;
+    if (!db_.open()) {
+        QMessageBox::warning(main_window, "Ошибка подключения к базе данных",
+                             QString("Не удалось подключиться к PostgreSQL (%1:%2, база \"%3\").\n"
+                                     "Проверьте файл настроек:\n%4\n\n%5")
+                                 .arg(host).arg(port).arg(name, settings_path, db_.lastError().text()));
+        return false;
     }
 
-    QMessageBox::warning(main_window, "Ошибка подключения к базе данных",
-                         QString("Не удалось подключиться к PostgreSQL (%1:%2, база \"%3\").\n"
-                                 "Проверьте файл настроек:\n%4\n\n%5")
-                             .arg(host).arg(port).arg(name, settings_path, db_.lastError().text()));
-    return false;
+    if (!EnsureSchema()) {
+        db_.close();
+        return false;
+    }
+
+    return true;
 }
+
+
+bool SQLTable::EnsureSchema() {
+    QSqlQuery query(db_);
+
+    for (const auto& column : table_columns_and_types) {
+        if (column.first == "id") {
+            continue;
+        }
+
+        // SQLite-совместимый тип из таблицы колонок приводим к типу PostgreSQL.
+        const QString sql_type = column.second == "DATETIME" ? "TIMESTAMP" : column.second;
+        // DDL нельзя выполнять через server-side prepared statement QPSQL.
+        const QString sql = QString("ALTER TABLE \"%1\" ADD COLUMN IF NOT EXISTS %2 %3")
+                                .arg(data_base_name.toLower(), column.first.toLower(), sql_type);
+        if (!query.exec(sql)) {
+            QMessageBox::warning(main_window, "Ошибка обновления схемы базы данных",
+                                 QString("Не удалось добавить столбец %1 в таблицу %2.\n\n"
+                                         "SQL: %3\n\n%4")
+                                     .arg(column.first, data_base_name, sql, query.lastError().text()));
+            return false;
+        }
+        query.finish();
+    }
+
+    return true;
+}
+
 
 const QSqlDatabase& SQLTable::GetDataBase() {
     return db_;

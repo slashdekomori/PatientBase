@@ -31,6 +31,7 @@ public:
     const std::unordered_map<QCheckBox*, std::vector<QObject*>>& GetCheckboxesAndWidgets();
     std::unordered_map<QObject*, QCheckBox*>& GetWidgetsAndCheckboxes();
     std::string GetWidgetValue(const QString &key) const;
+    bool HasWidget(const QString& key) const;
     QObject* GetWidget(const QString& key) const;
     const std::vector<QObject*> GetWidgetsFromTabName(const QString& tab);
     const std::vector<QObject*>& GetAllWidgets() const;

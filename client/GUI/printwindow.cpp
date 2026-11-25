@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QtGlobal>
 #include <QMessageBox>
+#include <exception>
 #include <memory>
 #include <QDesktopServices>
 #include <QUrl>
@@ -118,7 +119,9 @@ void PrintWindow::LaunchDocParser() {
     if (!DocParser->waitForStarted()) {
         QMessageBox::warning(this, "Не удалось запустить процесс: DocParser",
                            DocParser->errorString());
-        DocParser.get()->deleteLater();
+        // Не оставляем unique_ptr на объект, который будет удалён event loop.
+        DocParser->deleteLater();
+        DocParser.release();
     }
 }
 
@@ -137,26 +140,34 @@ void PrintWindow::print_button_clicked(){
     std::vector<std::string> doc_to_parse = CollectDocumentsToParse();
         if (doc_to_parse.empty()) { return; }
 
-        widget_handler_.FillWidgetsMap();
-        QString file_path = QString::fromStdString(widget_handler_.GetWidgetValue("PatientFIO") + " " + widget_handler_.GetWidgetValue("IncomeDate"));
-        // отсекаем время от даты поступления
-        file_path = file_path.chopped(6);
-        if (doc_to_parse[0] == "ALL_HYSTORY") {
-            file_path = "Output/ALL_HYSTORY/" + file_path + ".docx";
-            QFileInfo file_info(file_path);
-            if (file_info.exists() && file_info.isFile()) {
-                QMessageBox::StandardButton reply;
-                reply = QMessageBox::question(this, "Внимание", "Вы уже выводили и редактировали всю историю, загрузить ее?",
-                                              QMessageBox::Yes | QMessageBox::No);
-                if (reply == QMessageBox::Yes) {
-                    QDesktopServices::openUrl(QUrl::fromLocalFile(file_path));
-                    hide();
-                    return;
+        try {
+            widget_handler_.FillWidgetsMap();
+            QString file_path = QString::fromStdString(widget_handler_.GetWidgetValue("PatientFIO") + " " + widget_handler_.GetWidgetValue("IncomeDate"));
+            // отсекаем время от даты поступления
+            file_path = file_path.chopped(6);
+            if (doc_to_parse[0] == "ALL_HYSTORY") {
+                file_path = "Output/ALL_HYSTORY/" + file_path + ".docx";
+                QFileInfo file_info(file_path);
+                if (file_info.exists() && file_info.isFile()) {
+                    QMessageBox::StandardButton reply;
+                    reply = QMessageBox::question(this, "Внимание", "Вы уже выводили и редактировали всю историю, загрузить ее?",
+                                                  QMessageBox::Yes | QMessageBox::No);
+                    if (reply == QMessageBox::Yes) {
+                        QDesktopServices::openUrl(QUrl::fromLocalFile(file_path));
+                        hide();
+                        return;
+                    }
                 }
             }
-        }
 
-        json_printer_.MakeJSONFromData(std::move(doc_to_parse));
+            json_printer_.MakeJSONFromData(std::move(doc_to_parse));
+        } catch (const std::exception& error) {
+            QMessageBox::warning(this, "Ошибка подготовки печати",
+                                 QString("Не удалось сформировать patient_data.json:\n\n%1").arg(error.what()));
+            ui->PrintButton->setEnabled(true);
+            ui->LoadLable->setText("");
+            return;
+        }
         if (DocParser && DocParser->state() == QProcess::Running) {
             DocParser->write("read_json\n");
         } else {
@@ -199,6 +210,10 @@ void PrintWindow::updateProgressBar(const QString& value){
 
 void PrintWindow::HandleDocParserOutput()
 {
+    if (!DocParser) {
+        return;
+    }
+
     // Читаем все доступные данные из стандартного вывода
     while (DocParser->canReadLine()) {
         QByteArray outputLine = DocParser->readLine();

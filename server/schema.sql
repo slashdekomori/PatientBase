@@ -351,5 +351,6 @@ CREATE TABLE IF NOT EXISTS database (
     dopobsledovaniedate7 date,
     dopobsledovanievariant8 text,
     dopobsledovanietext8 text,
-    dopobsledovaniedate8 date
+    dopobsledovaniedate8 date,
+    dopobsledovaniyajson text
 );

@@ -6,6 +6,12 @@
 #include <algorithm>
 #include <cctype>
 
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonParseError>
+#include <QString>
+
 JSONPrinter::JSONPrinter(WidgetHandler& widget_handler) : widget_handler_(widget_handler) {
 
 }
@@ -90,8 +96,10 @@ void JSONPrinter::ParseAllTreatmentInStacionare(widgets_data& data, JSON::Builde
         ParseBHAnalises(index, data);
         ParseOAMAnalises(index, data);
     }
-    for (int i = 1; i <= Constants::NUMBER_OF_DOP_OBSLEDOVANIYA; i++) {
-        ParseDopObservations(QString::number(i), data);
+    if (!ParseDopObservationsJson(data)) {
+        for (int i = 1; i <= Constants::NUMBER_OF_DOP_OBSLEDOVANIYA; i++) {
+            ParseDopObservations(QString::number(i), data);
+        }
     }
 
     for (int i = 1; i <= Constants::NUMBER_OF_CONSULTATIONS_AND_MANIPULATIONS; i++) {
@@ -472,6 +480,49 @@ void JSONPrinter::ParseDopObservations(const QString& index, widgets_data& data)
     AddObservationResultToDate(data, dop_obsledovanie_date, variant + " " + std::move(text) + "; ");
     AddObservationToDate(data, dop_obsledovanie_date, variant);
     AddPlainObservationToDate(data, std::move(dop_obsledovanie_date), variant);
+}
+
+bool JSONPrinter::ParseDopObservationsJson(widgets_data& data) {
+    if (!widget_handler_.HasWidget("DopObsledovaniyaJson")) {
+        return false;
+    }
+
+    const QString raw_json = QString::fromStdString(
+        widget_handler_.GetWidgetValue("DopObsledovaniyaJson")).trimmed();
+    if (raw_json.isEmpty()) {
+        return false;
+    }
+
+    QJsonParseError parse_error;
+    const QJsonDocument document = QJsonDocument::fromJson(raw_json.toUtf8(), &parse_error);
+    if (parse_error.error != QJsonParseError::NoError || !document.isArray()) {
+        return false;
+    }
+
+    const QJsonArray rows = document.array();
+    for (const auto& value : rows) {
+        if (!value.isObject()) {
+            continue;
+        }
+
+        const QJsonObject object = value.toObject();
+        std::string variant = object.value("variant").toString().trimmed().toStdString();
+        std::string text = object.value("text").toString().trimmed().toStdString();
+        std::string dop_obsledovanie_date = object.value("date").toString().trimmed().toStdString();
+
+        if (variant.empty() && text.empty()) {
+            continue;
+        }
+        if (dop_obsledovanie_date.empty()) {
+            dop_obsledovanie_date = widget_handler_.GetWidgetValue("IncomeDate");
+        }
+
+        AddObservationResultToDate(data, dop_obsledovanie_date, variant + " " + text + "; ");
+        AddObservationToDate(data, dop_obsledovanie_date, variant);
+        AddPlainObservationToDate(data, std::move(dop_obsledovanie_date), variant);
+    }
+
+    return true;
 }
 
 void JSONPrinter::ParseEKG(widgets_data& data) {

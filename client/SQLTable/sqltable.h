@@ -27,6 +27,7 @@ private:
     // PostgreSQL возвращает имена столбцов в нижнем регистре: lower -> имя виджета
     QHash<QString, QString> column_names_by_lower_;
     bool OpenConnection();
+    bool EnsureSchema();
     bool MakeTransaction();
     bool MakeCheckPoint();
 
@@ -377,7 +378,8 @@ private:
         { "DopObsledovanieDate7" , "DATE" },
         { "DopObsledovanieVariant8" , "TEXT" },
         { "DopObsledovanieText8" , "TEXT" },
-        { "DopObsledovanieDate8" , "DATE" }
+        { "DopObsledovanieDate8" , "DATE" },
+        { "DopObsledovaniyaJson" , "TEXT" }
     };
 };
 

@@ -195,6 +195,11 @@ std::string WidgetHandler::GetWidgetValue(const QString& key) const {
     return result.trimmed().toStdString();
 }
 
+bool WidgetHandler::HasWidget(const QString& key) const
+{
+    return all_widgets_map_.find(key) != all_widgets_map_.end();
+}
+
 QObject *WidgetHandler::GetWidget(const QString &key) const
 {
     QObject* result = all_widgets_map_.at(key);

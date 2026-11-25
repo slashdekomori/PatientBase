@@ -23,6 +23,7 @@ private:
     void ParseBHAnalises(const QString& index, widgets_data &data);
     void ParseKalAnalises(widgets_data& data);
     void ParseDopObservations(const QString& index, widgets_data &data);
+    bool ParseDopObservationsJson(widgets_data &data);
     void ParseEKG(widgets_data& data);
     bool IsNeedToParseDiariesEveryDay();
 
