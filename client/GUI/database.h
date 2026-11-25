@@ -6,6 +6,7 @@
 #include <QDate>
 
 #include <SQLTable/sqltable.h>
+#include "Common/casedocumentrepository.h"
 #include "Common/common.h"
 #include "Common/diariesparser.h"
 #include "GUI/addanaliseswindow.h"
@@ -68,6 +69,8 @@ private slots:
     void on_action_triggered();
     void on_copy_triggered();
     void OpenSettingsWindow();
+    void OpenDocumentFromDb();
+    void ShowDocumentVersions();
 
     // void on_ParseDiaries_button_clicked();
 
@@ -85,6 +88,8 @@ private:
     void ConnectWidgetsToCheckIfDataChanged();
     void ConnectDopAnalisesComboBoxesToDescriptionParser();
     bool IsAllLinesEmpty(QCheckBox *check_box);
+    QString AllHystoryFilePath() const;
+    void SyncLocalDocumentToDb();
     void ChangeLine(QLineEdit* line_to_change, QString&& text);
     void ChangeText(QTextEdit* line_to_change, QString&& text);
     void ChangeCombobox(QComboBox* combobox_to_change, QString&& text);
@@ -97,6 +102,7 @@ private:
 
     //Структуры для доп функций==========================================
     SQLTable data_base_;
+    CaseDocumentRepository case_documents_;
     MKBMap mkb_map_;
     WidgetHandler widget_handler_;
     QCompleter* operation_list_completer_ = nullptr;

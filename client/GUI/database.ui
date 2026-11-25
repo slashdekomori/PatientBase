@@ -9963,6 +9963,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
     <addaction name="settings_action"/>
     <addaction name="make_copy_action"/>
+    <addaction name="separator"/>
+    <addaction name="open_document_from_db_action"/>
+    <addaction name="document_versions_action"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -9981,6 +9984,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <action name="make_copy_action">
    <property name="text">
     <string>Создать копию случая</string>
+   </property>
+  </action>
+  <action name="open_document_from_db_action">
+   <property name="text">
+    <string>Открыть историю из БД</string>
+   </property>
+  </action>
+  <action name="document_versions_action">
+   <property name="text">
+    <string>Версии документа</string>
    </property>
   </action>
  </widget>
