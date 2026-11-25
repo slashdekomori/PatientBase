@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     // sharedMemory.create(1);
 
     DataBase db;
-    db.show();
+    db.showMaximized();
 
 
 
