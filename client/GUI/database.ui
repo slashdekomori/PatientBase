@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1647</width>
-    <height>944</height>
+    <height>971</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -173,7 +173,7 @@ QPushButton:focus {
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="MainInfo_tab">
        <attribute name="title">
@@ -376,7 +376,7 @@ QPushButton:focus {
                <bool>true</bool>
               </property>
               <property name="timeSpec">
-               <enum>Qt::LocalTime</enum>
+               <enum>Qt::TimeSpec::LocalTime</enum>
               </property>
              </widget>
             </item>
@@ -620,7 +620,7 @@ QPushButton:focus {
                  <bool>true</bool>
                 </property>
                 <property name="timeSpec">
-                 <enum>Qt::LocalTime</enum>
+                 <enum>Qt::TimeSpec::LocalTime</enum>
                 </property>
                </widget>
               </item>
@@ -759,7 +759,7 @@ QPushButton:focus {
             <item>
              <spacer name="horizontalSpacer_18">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -776,7 +776,7 @@ QPushButton:focus {
         <item row="6" column="0">
          <spacer name="verticalSpacer">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -864,7 +864,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <item>
            <spacer name="verticalSpacer_8">
             <property name="orientation">
-             <enum>Qt::Vertical</enum>
+             <enum>Qt::Orientation::Vertical</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -1309,7 +1309,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <item>
            <spacer name="verticalSpacer_4">
             <property name="orientation">
-             <enum>Qt::Vertical</enum>
+             <enum>Qt::Orientation::Vertical</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -1680,10 +1680,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
              </size>
             </property>
             <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
+             <enum>QFrame::Shape::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
+             <enum>QFrame::Shadow::Raised</enum>
             </property>
            </widget>
           </item>
@@ -1832,7 +1832,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <item>
            <spacer name="verticalSpacer_2">
             <property name="orientation">
-             <enum>Qt::Vertical</enum>
+             <enum>Qt::Orientation::Vertical</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -2044,7 +2044,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             <item>
              <spacer name="horizontalSpacer_2">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -2173,7 +2173,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <spacer name="horizontalSpacer_4">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -2703,7 +2703,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="6" column="0">
          <spacer name="verticalSpacer_17">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -2716,7 +2716,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="2" column="0">
          <spacer name="verticalSpacer_7">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -3672,7 +3672,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="5" column="0">
          <spacer name="verticalSpacer_9">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -3692,7 +3692,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="1" column="0">
          <spacer name="verticalSpacer_11">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -4130,7 +4130,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="minimumDateTime">
                  <datetime>
-                  <hour>12</hour>
+                  <hour>9</hour>
                   <minute>0</minute>
                   <second>0</second>
                   <year>1989</year>
@@ -4267,7 +4267,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="minimumDateTime">
                  <datetime>
-                  <hour>12</hour>
+                  <hour>9</hour>
                   <minute>0</minute>
                   <second>0</second>
                   <year>1989</year>
@@ -4715,7 +4715,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="6" column="0">
          <spacer name="verticalSpacer_14">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -5424,7 +5424,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="4" column="0">
          <spacer name="verticalSpacer_3">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -5493,7 +5493,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="10" column="0" colspan="2">
          <spacer name="verticalSpacer_13">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -5771,7 +5771,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <item>
            <spacer name="horizontalSpacer_15">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -5797,7 +5797,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="maximumDateTime">
              <datetime>
-              <hour>17</hour>
+              <hour>14</hour>
               <minute>59</minute>
               <second>59</second>
               <year>2099</year>
@@ -5807,7 +5807,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="minimumDateTime">
              <datetime>
-              <hour>21</hour>
+              <hour>17</hour>
               <minute>59</minute>
               <second>26</second>
               <year>1910</year>
@@ -5874,7 +5874,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="12" column="0" colspan="2">
          <spacer name="verticalSpacer_18">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -6044,7 +6044,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>14</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -6054,7 +6054,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>21</hour>
+                <hour>17</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -6140,7 +6140,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>14</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -6150,7 +6150,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>21</hour>
+                <hour>17</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -6230,7 +6230,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>14</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -6240,7 +6240,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>21</hour>
+                <hour>17</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -6596,7 +6596,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <item>
            <spacer name="horizontalSpacer_16">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -6622,7 +6622,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="maximumDateTime">
              <datetime>
-              <hour>17</hour>
+              <hour>14</hour>
               <minute>59</minute>
               <second>59</second>
               <year>2099</year>
@@ -6632,7 +6632,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="minimumDateTime">
              <datetime>
-              <hour>21</hour>
+              <hour>17</hour>
               <minute>59</minute>
               <second>26</second>
               <year>1910</year>
@@ -6790,7 +6790,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <item>
            <spacer name="horizontalSpacer_17">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -6816,7 +6816,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="maximumDateTime">
              <datetime>
-              <hour>17</hour>
+              <hour>14</hour>
               <minute>59</minute>
               <second>59</second>
               <year>2099</year>
@@ -6826,7 +6826,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="minimumDateTime">
              <datetime>
-              <hour>21</hour>
+              <hour>17</hour>
               <minute>59</minute>
               <second>26</second>
               <year>1910</year>
@@ -6851,7 +6851,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="1" column="0" rowspan="2" colspan="2">
          <spacer name="verticalSpacer_12">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -6943,7 +6943,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>14</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -6953,7 +6953,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>21</hour>
+                <hour>17</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -7041,7 +7041,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>14</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -7051,7 +7051,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>21</hour>
+                <hour>17</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -7139,7 +7139,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>14</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -7149,7 +7149,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>21</hour>
+                <hour>17</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -7237,7 +7237,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>14</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -7247,7 +7247,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>21</hour>
+                <hour>17</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -7274,7 +7274,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="6" column="0">
          <spacer name="verticalSpacer_5">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -7579,7 +7579,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             <item>
              <spacer name="horizontalSpacer_9">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -7798,36 +7798,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item>
                  <property name="text">
                   <string>нет</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Бунин Н.М.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Курбатова А.В.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Лихошерст В.А.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Новикова А.А.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Седых С.В.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Шагаров С.А.</string>
                  </property>
                 </item>
                </widget>
@@ -8127,7 +8097,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <spacer name="horizontalSpacer_3">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -8194,7 +8164,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <spacer name="horizontalSpacer_5">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -8261,7 +8231,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <spacer name="horizontalSpacer_6">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -8327,7 +8297,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <spacer name="horizontalSpacer_7">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -8417,7 +8387,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item>
                  <spacer name="horizontalSpacer_19">
                   <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                   <enum>Qt::Orientation::Horizontal</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -8506,7 +8476,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="6" column="0">
          <spacer name="verticalSpacer_6">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -8678,36 +8648,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item>
                  <property name="text">
                   <string>нет</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Бунин Н.М.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Курбатова А.В.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Лихошерст В.А.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Новикова А.А.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Седых С.В.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Шагаров С.А.</string>
                  </property>
                 </item>
                </widget>
@@ -9006,7 +8946,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <spacer name="horizontalSpacer_8">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -9067,7 +9007,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <spacer name="horizontalSpacer_10">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -9128,7 +9068,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <spacer name="horizontalSpacer_11">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -9188,7 +9128,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               <item>
                <spacer name="horizontalSpacer_12">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Orientation::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -9272,7 +9212,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item>
                  <spacer name="horizontalSpacer_21">
                   <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                   <enum>Qt::Orientation::Horizontal</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -9509,7 +9449,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             <item>
              <spacer name="horizontalSpacer_13">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -9985,7 +9925,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <item row="12" column="0">
          <spacer name="verticalSpacer_15">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -10007,7 +9947,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <x>0</x>
      <y>0</y>
      <width>1647</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
