@@ -12,6 +12,7 @@ class AddAnalisesWindow;
 
 class QComboBox;
 class QDateEdit;
+class QEvent;
 class QLineEdit;
 class QPushButton;
 class QTextEdit;
@@ -45,6 +46,12 @@ public:
 signals:
     void RowsChanged();
     void VariantComboCreated(QComboBox* combo);
+    // Просьба сохранить карточку через основную кнопку "Сохранить" клиента.
+    void ClientSaveRequested();
+
+protected:
+    void changeEvent(QEvent* event) override;
+    void reject() override;
 
 private slots:
     void SaveButtonClicked();
