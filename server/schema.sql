@@ -354,3 +354,18 @@ CREATE TABLE IF NOT EXISTS database (
     dopobsledovaniedate8 date,
     dopobsledovaniyajson text
 );
+
+-- Актуальная версия DOCX для случая. Одна строка на (case_id, kind);
+-- клиент обновляет её через INSERT ... ON CONFLICT DO UPDATE.
+CREATE TABLE IF NOT EXISTS case_documents (
+    case_id bigint NOT NULL,
+    kind text NOT NULL,
+    file_name text NOT NULL,
+    content bytea NOT NULL,
+    sha256 text NOT NULL,
+    updated_at timestamptz NOT NULL DEFAULT now(),
+    PRIMARY KEY (case_id, kind)
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS case_documents_current_uq
+    ON case_documents(case_id, kind);

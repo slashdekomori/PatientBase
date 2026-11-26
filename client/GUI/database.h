@@ -6,6 +6,7 @@
 #include <QDate>
 
 #include <SQLTable/sqltable.h>
+#include "Common/casedocumentrepository.h"
 #include "Common/common.h"
 #include "Common/diariesparser.h"
 #include "GUI/addanaliseswindow.h"
@@ -100,6 +101,7 @@ private:
 
     //Структуры для доп функций==========================================
     SQLTable data_base_;
+    CaseDocumentRepository case_documents_;
     MKBMap mkb_map_;
     WidgetHandler widget_handler_;
     QCompleter* operation_list_completer_ = nullptr;

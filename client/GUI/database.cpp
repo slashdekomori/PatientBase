@@ -82,8 +82,9 @@ DataBase::DataBase(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::DataBase)
     , data_base_(this)
+    , case_documents_()
     , diaries_parser_(widget_handler_)
-    , print_window(new PrintWindow(this, widget_handler_))
+    , print_window(new PrintWindow(this, widget_handler_, &case_documents_))
     , search_window(new SearchWindow(this, data_base_, mkb_map_))
 
 {
@@ -125,6 +126,7 @@ DataBase::DataBase(QWidget *parent)
 
 
 void DataBase::closeEvent(QCloseEvent *event){
+    print_window->DisableCloseSavePrompt();
     if (autosave_timer_) {
         autosave_timer_->stop();
     }
@@ -886,6 +888,7 @@ void DataBase::PrintButtonClicked(){
         }
     }
     is_changed_from_last_print = false;
+    print_window->SetCaseContext(patient_id_.value_or(-1));
     print_window->show();
 }
 

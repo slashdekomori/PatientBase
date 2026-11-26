@@ -5,3 +5,6 @@
 python3 sqlite_to_csv.py DataBase.db
 5. Запустить команду:
 PGPASSWORD='<пароль>' PGSSLMODE=require psql -h <IP-сервера> -U pb -d <Название-базы> -f load_cases.sql
+
+Для добавления хранилища DOCX в уже существующую базу отделения:
+PGPASSWORD='<пароль>' PGSSLMODE=require psql -h <IP-сервера> -U pb -d <Название-базы> -f case_documents.sql
