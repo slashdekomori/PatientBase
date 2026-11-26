@@ -3,6 +3,7 @@
 
 #include <QApplication>
 #include <QComboBox>
+#include <QCoreApplication>
 #include <QDateEdit>
 #include <QEvent>
 #include <QHBoxLayout>
@@ -14,10 +15,12 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QSignalBlocker>
+#include <QScrollArea>
 #include <QSize>
 #include <QStyle>
 #include <QTextEdit>
 #include <QVBoxLayout>
+#include <QWheelEvent>
 #include <QWidget>
 
 AddAnalisesWindow::AddAnalisesWindow(QWidget *parent)
@@ -36,6 +39,10 @@ AddAnalisesWindow::AddAnalisesWindow(QWidget *parent)
         connect(row.date, &QDateEdit::dateChanged, this, [this]() { NotifyRowsChanged(); });
         connect(row.text, &QTextEdit::textChanged, this, [this]() { NotifyRowsChanged(); });
     }
+
+    // Колесико мыши над полями не должно менять даты/варианты. Перенаправляем
+    // его на scroll area, чтобы прокрутка работала только по самому окну.
+    InstallWheelFilter(ui->scrollAreaWidgetContents);
 }
 
 AddAnalisesWindow::~AddAnalisesWindow()
@@ -60,6 +67,28 @@ void AddAnalisesWindow::NotifyRowsChanged()
     }
 
     emit RowsChanged();
+}
+
+void AddAnalisesWindow::InstallWheelFilter(QWidget* root)
+{
+    if (!root) {
+        return;
+    }
+    root->installEventFilter(this);
+    for (QWidget* child : root->findChildren<QWidget*>()) {
+        child->installEventFilter(this);
+    }
+}
+
+bool AddAnalisesWindow::eventFilter(QObject* obj, QEvent* event)
+{
+    if (event && event->type() == QEvent::Wheel && ui && ui->dialogScrollArea) {
+        // Не даём QComboBox/QDateEdit/QLineEdit менять значение колесиком.
+        // Событие уходит сразу на scroll area, поэтому прокрутка окна работает.
+        QCoreApplication::sendEvent(ui->dialogScrollArea, event);
+        return true;
+    }
+    return QDialog::eventFilter(obj, event);
 }
 
 QVector<DopObservationRow> AddAnalisesWindow::ParseRowsJson(const QString& json)
@@ -305,6 +334,7 @@ AddAnalisesWindow::RowWidgets AddAnalisesWindow::CreateExtraRow()
     // Кнопки закреплены снизу вне scroll area, поэтому новые строки просто
     // добавляются в конец прокручиваемого списка.
     ui->verticalLayout->addWidget(row.container);
+    InstallWheelFilter(row.container);
 
     connect(row.variant, &QComboBox::currentTextChanged, this, [this]() { NotifyRowsChanged(); });
     connect(row.date, &QDateEdit::dateChanged, this, [this]() { NotifyRowsChanged(); });

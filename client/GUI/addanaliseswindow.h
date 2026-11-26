@@ -52,6 +52,7 @@ signals:
 protected:
     void changeEvent(QEvent* event) override;
     void reject() override;
+    bool eventFilter(QObject* obj, QEvent* event) override;
 
 private slots:
     void SaveButtonClicked();
@@ -73,6 +74,7 @@ private:
     QLineEdit* json_field_ = nullptr;
 
     void NotifyRowsChanged();
+    void InstallWheelFilter(QWidget* root);
     QVector<RowWidgets> FixedRows() const;
     RowWidgets CreateExtraRow();
     void EnsureExtraRows(int count);
