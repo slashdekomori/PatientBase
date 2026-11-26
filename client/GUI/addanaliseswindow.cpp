@@ -16,6 +16,7 @@
 #include <QPushButton>
 #include <QSignalBlocker>
 #include <QScrollArea>
+#include <QScrollBar>
 #include <QSize>
 #include <QStyle>
 #include <QTextEdit>
@@ -84,8 +85,15 @@ bool AddAnalisesWindow::eventFilter(QObject* obj, QEvent* event)
 {
     if (event && event->type() == QEvent::Wheel && ui && ui->dialogScrollArea) {
         // Не даём QComboBox/QDateEdit/QLineEdit менять значение колесиком.
-        // Событие уходит сразу на scroll area, поэтому прокрутка окна работает.
-        QCoreApplication::sendEvent(ui->dialogScrollArea, event);
+        // Отправляем событие сразу ползунку — так же, как это делает сама
+        // QScrollArea, когда колесо находится над пустой областью окна.
+        auto* wheel = static_cast<QWheelEvent*>(event);
+        QScrollBar* bar = qAbs(wheel->angleDelta().x()) > qAbs(wheel->angleDelta().y())
+                              ? ui->dialogScrollArea->horizontalScrollBar()
+                              : ui->dialogScrollArea->verticalScrollBar();
+        if (bar) {
+            QCoreApplication::sendEvent(bar, event);
+        }
         return true;
     }
     return QDialog::eventFilter(obj, event);
