@@ -60,4 +60,7 @@ DISTFILES += \
     Sources_files/DepartmentInfo.json \
     Sources_files/DiagnosesMKB.txt \
     Sources_files/DiagnosesMKB_travma.txt \
-    Sources_files/OperationsMKB.txt
+    Sources_files/OperationsMKB.txt \
+    Sources_files/app.qss \
+    Sources_files/fonts/NotoSans-Bold.ttf \
+    Sources_files/fonts/NotoSans-Regular.ttf

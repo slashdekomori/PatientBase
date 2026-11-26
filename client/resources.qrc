@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file alias="style/app.qss">Resources/app.qss</file>
-        <file alias="fonts/NotoSans-Regular.ttf">Resources/fonts/NotoSans-Regular.ttf</file>
-        <file alias="fonts/NotoSans-Bold.ttf">Resources/fonts/NotoSans-Bold.ttf</file>
+        <file alias="style/app.qss">Sources_files/app.qss</file>
+        <file alias="fonts/NotoSans-Regular.ttf">Sources_files/fonts/NotoSans-Regular.ttf</file>
+        <file alias="fonts/NotoSans-Bold.ttf">Sources_files/fonts/NotoSans-Bold.ttf</file>
     </qresource>
 </RCC>
