@@ -551,10 +551,6 @@ void DataBase::ConnectDopAnalisesWidgetsToDopAnalisesButton()
 
     connect(&dop_analises_window, &AddAnalisesWindow::RowsChanged,
             this, &DataBase::CheckDopAnalises);
-    // Любой выход из окна допобследований (кнопка "Сохранить", крестик, Esc,
-    // сворачивание) должен отправлять актуальные данные в основную карточку.
-    connect(&dop_analises_window, &AddAnalisesWindow::ClientSaveRequested,
-            this, &DataBase::SaveButtonClicked);
 }
 
 const QString DataBase::GetDiagnosisContext(const QString& context) const {

@@ -4,7 +4,6 @@
 #include <QApplication>
 #include <QComboBox>
 #include <QDateEdit>
-#include <QEvent>
 #include <QHBoxLayout>
 #include <QIcon>
 #include <QJsonArray>
@@ -186,23 +185,7 @@ void AddAnalisesWindow::AddEmptyRow()
 
 void AddAnalisesWindow::SaveButtonClicked()
 {
-    emit ClientSaveRequested();
     hide();
-}
-
-void AddAnalisesWindow::changeEvent(QEvent* event)
-{
-    QDialog::changeEvent(event);
-    if (event && event->type() == QEvent::WindowStateChange &&
-        (windowState() & Qt::WindowMinimized)) {
-        emit ClientSaveRequested();
-    }
-}
-
-void AddAnalisesWindow::reject()
-{
-    emit ClientSaveRequested();
-    QDialog::reject();
 }
 
 void AddAnalisesWindow::AddRowButtonClicked()
