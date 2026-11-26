@@ -1,0 +1,223 @@
+QWidget {
+    font-family: "Noto Sans", "Segoe UI", Arial, sans-serif;
+    background-color: rgb(35, 36, 39); /* Однотонный цвет фона */
+    color: #d3d3d3; /* Светлый текст, но не белый */
+}
+
+/* Вкладки */
+QTabWidget {
+    background-color: rgb(47, 48, 52);
+    border: none;
+    color: white;
+    padding: 10px;
+}
+
+QTabBar::tab {
+    background: rgb(35, 36, 39);
+    color: #d3d3d3;
+    padding: 10px;
+    border: none;
+    font-size: 18px;
+}
+
+QTabBar::tab:selected {
+    color: white;
+    border-bottom: 1px solid #2baaff;
+}
+
+QTabBar::tab:hover {
+    color: white;
+}
+
+/* Группы и подписи */
+QGroupBox {
+    border: none;
+    color: white;
+    padding: 10px;
+}
+
+QLabel {
+    color: white;
+    background: transparent;
+    font-size: 18px;
+}
+
+/* Поля ввода */
+QComboBox, QLineEdit, QTextEdit, QDateTimeEdit, QDateEdit {
+    background: rgb(47, 48, 52);
+    color: rgb(234, 235, 255);
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+/* Чекбоксы */
+QCheckBox {
+    color: rgb(190, 211, 214);
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+QCheckBox::indicator:checked {
+    color: white;
+    background: none;
+    border: 2px solid #2baaff;
+}
+
+QCheckBox:disabled {
+    color: #6f7277; /* Приглушённый цвет текста */
+}
+
+QCheckBox:focus, QComboBox:focus, QLineEdit:focus,
+QTextEdit:focus, QDateTimeEdit:focus, QDateEdit:focus {
+    border-bottom: 1px solid #2baaff;
+}
+
+QCheckBox:checked {
+    border-bottom: 1px solid #2baaff;
+}
+
+/* Кнопки */
+QPushButton {
+    background-color: #333333;
+    color: rgb(190, 211, 214);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    border-bottom: 1px solid #2baaff;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+                                stop: 0 #444444, stop: 1 #3b3b3b);
+}
+
+QPushButton:pressed {
+    border: 2px solid #2baaff;
+}
+
+QPushButton:focus {
+    outline: none;
+    border: 2px solid #2baaff;
+}
+
+/* Таблицы и списки */
+QTableView, QTableWidget, QListWidget, QListView {
+    background-color: #2f3133;
+    color: #d3d3d3;
+    gridline-color: #444444;
+    border: none;
+}
+
+QTableView::item, QTableWidget::item, QListWidget::item, QListView::item {
+    background-color: #212224;
+    color: #d3d3d3;
+}
+
+QTableView::item:selected, QTableWidget::item:selected,
+QListWidget::item:selected, QListView::item:selected {
+    background-color: #2baaff;
+    color: white;
+}
+
+QHeaderView {
+    background-color: #333333;
+    color: white;
+    font-size: 18px;
+}
+
+QHeaderView::section {
+    background-color: #333333;
+    color: white;
+    padding: 4px;
+}
+
+QHeaderView::vertical {
+    background-color: #333333;
+    color: white;
+}
+
+/* Меню */
+QMenuBar {
+    background-color: rgb(35, 36, 39);
+    color: #d3d3d3;
+}
+
+QMenuBar::item {
+    background: transparent;
+    padding: 4px 8px;
+}
+
+QMenuBar::item:selected {
+    background: rgb(47, 48, 52);
+    color: white;
+}
+
+QMenu {
+    background-color: rgb(47, 48, 52);
+    color: #d3d3d3;
+    border: 1px solid #444444;
+}
+
+QMenu::item:selected {
+    background-color: #2baaff;
+    color: white;
+}
+
+/* Всплывающие подсказки */
+QToolTip {
+    background-color: rgb(47, 48, 52);
+    color: rgb(234, 235, 255);
+    border: 1px solid #444444;
+    padding: 4px;
+}
+
+/* Полосы прокрутки */
+QScrollBar:vertical {
+    background: rgb(35, 36, 39);
+    width: 12px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background: #55585e;
+    border-radius: 6px;
+    min-height: 24px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #6a6e76;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: transparent;
+}
+
+QScrollBar:horizontal {
+    background: rgb(35, 36, 39);
+    height: 12px;
+    margin: 0;
+}
+
+QScrollBar::handle:horizontal {
+    background: #55585e;
+    border-radius: 6px;
+    min-width: 24px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #6a6e76;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: transparent;
+}

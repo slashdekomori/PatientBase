@@ -47,6 +47,8 @@ FORMS += \
     GUI/searchwindow.ui \
     GUI/settingswindow.ui
 
+RESOURCES += \
+    resources.qrc
 
 
 # Default rules for deployment.

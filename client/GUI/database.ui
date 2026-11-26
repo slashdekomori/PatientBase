@@ -17,117 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget {
-    font-family: &quot;Noto Sans&quot;;
-    background-color: rgb(35, 36, 39); /* Однотонный цвет фона */
-    color: #d3d3d3; /* Светлый текст, но не белый */
-}
-
-QTabWidget {
-    background-color: rgb(47, 48, 52);
-    border: none; /* Убираем рамку */
-    color: white; /* Белый текст для названий полей */
-    padding: 10px;
-}
-
-/* Стиль для вкладок QTabWidget */
-QTabBar::tab {
-    background: rgb(35, 36, 39);
-    color: #d3d3d3; /* Светлый текст */
-    padding: 10px;
-    border: none; /* Убираем рамку */
-    font-size: 18px;
-}
-
-QTabBar::tab:selected { 
-    color: white; /* Белый текст при выборе вкладки */ 
-    border-bottom: 1px solid #2baaff;
-} 
-
-QTabBar::tab:hover {
-    color: white; /* Белый текст при наведении */
-}
-
-QGroupBox {
-    border: none; /* Без рамки */
-    color: white; /* Белый текст для названий полей */
-    padding: 10px;
-}
-
-/* Стиль для QLabel */
-QLabel {
-    color: white; /* Белый текст */
-    background: none; /* Убираем градиент */
-    font-size: 18px; /* Размер текста */
-}
-
-/* Общий стиль для всех полей ввода */
-QComboBox, QLineEdit, QTextEdit, QDateTimeEdit, QDateEdit {
-    background: rgb(47, 48, 52); /* Цвет заполнения без градиента */
-    color: rgb(234, 235, 255); /* Светлый текст */
-    border: none; /* Без рамок */
-    border-radius: 3px; /* Скругленные углы */
-    font-size: 16px; /* Размер текста */
-}
-
-/* Стиль для QCheckBox */
-QCheckBox {
-    color: rgb(190, 211, 214); /* Светлый текст */
-    border: none; /* Без рамок */
-    border-radius: 3px; /* Скругленные углы */
-    font-size: 16px; /* Размер текста */
-}
-
-QCheckBox::indicator:checked {
-	color: white; /* Белый текст */
-    background: none; /* Убираем градиент */
-    border: 2px solid #2baaff; /* Рамка для отмеченного индикатора */
-}
-
-/* Стиль для отключенных чекбоксов */
-QCheckBox:disabled {
-    color: #7f7f7f; /* Приглушенный цвет текста */
-    opacity: 0.5; /* Уменьшенная непрозрачность для визуального эффекта */
-}
-
-/* Эффект фокуса для чекбоксов */
-
-
-/* Нижняя рамка для полей ввода при фокусе */
-QCheckBox:focus, QComboBox:focus, QLineEdit:focus, QTextEdit:focus, QDateTimeEdit:focus, QDateEdit:focus {
-    border-bottom: 1px solid #2baaff; /* Цвет нижней рамки при фокусе */
-}
-
-QCheckBox:checked {
-    border-bottom: 1px solid #2baaff; /* Рамка при отмеченном состоянии */
-}
-
-/* Стиль для QPushButton */
-QPushButton {
-    background-color: #333333; /* Цвет кнопки */
-    color: rgb(190, 211, 214); /* Светлый текст */
-    border: none; /* Без рамок */
-    padding: 10px;
-    border-radius: 5px;
-    border-bottom: 1px solid #2baaff;
-}
-
-QPushButton:hover {
-    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #444444, stop: 1 #3b3b3b); /* Светлее при наведении */
-}
-
-QPushButton:pressed {
-    border: 2px solid #2baaff; /* Рамка при нажатии */
-}
-
-/* Эффект фокуса для кнопок */
-QPushButton:focus {
-    outline: none; /* Убираем стандартный фокус */
-    border: 2px solid #2baaff; /* Рамка при фокусе */
-}</string>
+   <string>PatientBase</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_4">
@@ -169,9 +59,6 @@ QPushButton:focus {
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
       <property name="currentIndex">
        <number>6</number>
       </property>
@@ -202,9 +89,6 @@ QPushButton:focus {
               <pointsize>-1</pointsize>
              </font>
             </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
             <property name="text">
              <string>Адрес</string>
             </property>
@@ -217,9 +101,6 @@ QPushButton:focus {
               <family>Noto Sans</family>
               <pointsize>-1</pointsize>
              </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -249,9 +130,6 @@ QPushButton:focus {
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
               <property name="text">
                <string>Номер истории болезни</string>
               </property>
@@ -271,9 +149,6 @@ QPushButton:focus {
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
              </widget>
             </item>
            </layout>
@@ -287,9 +162,6 @@ QPushButton:focus {
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <property name="text">
                <string>ФИО пациента</string>
@@ -310,9 +182,6 @@ QPushButton:focus {
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
              </widget>
             </item>
            </layout>
@@ -326,9 +195,6 @@ QPushButton:focus {
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <property name="text">
                <string>Дата рождения</string>
@@ -348,9 +214,6 @@ QPushButton:focus {
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <property name="maximumDateTime">
                <datetime>
@@ -412,9 +275,6 @@ QPushButton:focus {
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
               <property name="text">
                <string>форма оказания помощи</string>
               </property>
@@ -427,9 +287,6 @@ QPushButton:focus {
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <item>
                <property name="text">
@@ -506,9 +363,6 @@ QPushButton:focus {
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
                 <property name="text">
                  <string>дата и время поступления</string>
                 </property>
@@ -527,9 +381,6 @@ QPushButton:focus {
                   <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
                 </property>
                 <property name="wrapping">
                  <bool>false</bool>
@@ -571,9 +422,6 @@ QPushButton:focus {
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
                 <property name="text">
                  <string>дата и время выписки</string>
                 </property>
@@ -592,9 +440,6 @@ QPushButton:focus {
                   <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
                 </property>
                 <property name="maximumDateTime">
                  <datetime>
@@ -642,9 +487,6 @@ QPushButton:focus {
                     <pointsize>-1</pointsize>
                    </font>
                   </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
                   <property name="text">
                    <string>Группа крови, Rh ф-р</string>
                   </property>
@@ -657,9 +499,6 @@ QPushButton:focus {
                     <family>Noto Sans</family>
                     <pointsize>-1</pointsize>
                    </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
                   </property>
                   <item>
                    <property name="text">
@@ -718,9 +557,6 @@ QPushButton:focus {
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
                 <property name="text">
                  <string>Кель фактор</string>
                 </property>
@@ -733,9 +569,6 @@ QPushButton:focus {
                   <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
                 </property>
                 <item>
                  <property name="text">
@@ -810,9 +643,6 @@ QPushButton:focus {
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
               <property name="text">
                <string>лист нетрудоспособности</string>
               </property>
@@ -837,9 +667,6 @@ QPushButton:focus {
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <property name="tabChangesFocus">
                <bool>true</bool>
@@ -898,9 +725,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
                 <property name="text">
                  <string>Основное заболевание</string>
                 </property>
@@ -925,9 +749,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
                 </property>
                 <property name="tabChangesFocus">
                  <bool>true</bool>
@@ -966,9 +787,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                     <pointsize>-1</pointsize>
                    </font>
                   </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
                   <property name="text">
                    <string>МКБ</string>
                   </property>
@@ -993,9 +811,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                     <family>Noto Sans</family>
                     <pointsize>-1</pointsize>
                    </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
                   </property>
                  </widget>
                 </item>
@@ -1027,9 +842,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
               <property name="text">
                <string>Осложнения</string>
               </property>
@@ -1054,9 +866,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <property name="tabChangesFocus">
                <bool>true</bool>
@@ -1103,9 +912,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
               <property name="text">
                <string>Внешняя причина при травмах</string>
               </property>
@@ -1130,9 +936,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <property name="tabChangesFocus">
                <bool>true</bool>
@@ -1179,9 +982,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
               <property name="text">
                <string>Сопуствующие заболевания</string>
               </property>
@@ -1206,9 +1006,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <property name="tabChangesFocus">
                <bool>true</bool>
@@ -1255,9 +1052,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
               <property name="text">
                <string>Дополнительные сведения</string>
               </property>
@@ -1282,9 +1076,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <property name="tabChangesFocus">
                <bool>true</bool>
@@ -1343,9 +1134,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
                 <property name="text">
                  <string>Жалобы</string>
                 </property>
@@ -1370,9 +1158,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
                 </property>
                 <property name="tabChangesFocus">
                  <bool>true</bool>
@@ -1416,9 +1201,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
                 <property name="text">
                  <string>Анамнез заболевания</string>
                 </property>
@@ -1443,9 +1225,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
                 </property>
                 <property name="tabChangesFocus">
                  <bool>true</bool>
@@ -1492,9 +1271,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <pointsize>-1</pointsize>
                  </font>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
                 <property name="text">
                  <string>Анамнез жизни</string>
                 </property>
@@ -1519,9 +1295,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   <family>Noto Sans</family>
                   <pointsize>-1</pointsize>
                  </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
                 </property>
                 <property name="tabChangesFocus">
                  <bool>true</bool>
@@ -1567,9 +1340,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
               <property name="text">
                <string>Аллергии</string>
               </property>
@@ -1594,9 +1364,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <property name="text">
                <string>отрицает</string>
@@ -1627,9 +1394,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <pointsize>-1</pointsize>
                </font>
               </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
               <property name="text">
                <string>Наличие имплантов</string>
               </property>
@@ -1654,9 +1418,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <family>Noto Sans</family>
                 <pointsize>-1</pointsize>
                </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
               <property name="text">
                <string>нет</string>

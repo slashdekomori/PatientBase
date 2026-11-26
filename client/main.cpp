@@ -1,8 +1,8 @@
 #include "GUI/database.h"
 
 #include <QApplication>
+#include <QFile>
 #include <QFontDatabase>
-#include <QCoreApplication>
 #include <QLocale>
 #include <QTranslator>
 // #include <QSharedMemory>
@@ -14,10 +14,15 @@ int main(int argc, char *argv[])
 {
 
 
-    QApplication a(argc, argv);
-    const QString fontDir = QCoreApplication::applicationDirPath() + "/Sources_files/";
-    QFontDatabase::addApplicationFont(fontDir + "NotoSans-Regular.ttf");
-    QFontDatabase::addApplicationFont(fontDir + "NotoSans-Bold.ttf");
+    QApplication a(argc, argv);
+
+    QFontDatabase::addApplicationFont(":/fonts/NotoSans-Regular.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/NotoSans-Bold.ttf");
+
+    QFile style_file(":/style/app.qss");
+    if (style_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        a.setStyleSheet(QString::fromUtf8(style_file.readAll()));
+    }
     // const QString uniqueKey = "Demon48Lipetsk.ODB";
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
