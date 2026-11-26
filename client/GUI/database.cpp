@@ -5,15 +5,8 @@
 
 #include <QAction>
 #include <QCompleter>
-#include <QCryptographicHash>
 #include <QDate>
-#include <QDesktopServices>
-#include <QDir>
-#include <QFile>
-#include <QFileInfo>
-#include <QInputDialog>
 #include <QSignalBlocker>
-#include <QUrl>
 
 
 namespace {
@@ -88,14 +81,12 @@ DataBase::DataBase(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::DataBase)
     , data_base_(this)
-    , case_documents_(data_base_.GetDataBase())
     , diaries_parser_(widget_handler_)
-    , print_window(new PrintWindow(this, widget_handler_, &case_documents_))
+    , print_window(new PrintWindow(this, widget_handler_))
     , search_window(new SearchWindow(this, data_base_, mkb_map_))
 
 {
     ui->setupUi(this);
-    case_documents_.EnsureSchema();
     ui->TabWidget->setCurrentIndex(0);
     widget_handler_.CollectWidgetFromTab(ui->TabWidget);
     // После появления QScrollArea штатные поля допобследований и дополнительные
@@ -175,8 +166,6 @@ void DataBase::ConnectAll() {
         }
     }
     connect(ui->make_copy_action, &QAction::triggered, this, &DataBase::on_copy_triggered);
-    connect(ui->open_document_from_db_action, &QAction::triggered, this, &DataBase::OpenDocumentFromDb);
-    connect(ui->document_versions_action, &QAction::triggered, this, &DataBase::ShowDocumentVersions);
 }
 
 void DataBase::ConnectMedicines(){
@@ -264,7 +253,6 @@ void DataBase::FillForms(std::unordered_map<QString, QVariant>&& widgets_data) {
         patient_id_ = widgets_data.at("id").toInt();
         dates_is_filled = true;
         ui->statusbar->showMessage("открыт случай для редактирования");
-        SyncLocalDocumentToDb();
     } else {
         patient_id_.reset();
         dates_is_filled = false;
@@ -875,9 +863,6 @@ void DataBase::PrintButtonClicked(){
         }
     }
     is_changed_from_last_print = false;
-    if (patient_id_.has_value()) {
-        print_window->SetCaseContext(patient_id_.value());
-    }
     print_window->show();
 }
 
@@ -923,172 +908,3 @@ void DataBase::on_copy_triggered() {
 
 // }
 
-
-QString DataBase::AllHystoryFilePath() const
-{
-    QString name = QString::fromStdString(widget_handler_.GetWidgetValue("PatientFIO")) + " " +
-                   QString::fromStdString(widget_handler_.GetWidgetValue("IncomeDate"));
-    name = name.chopped(6);
-    return QString("Output/ALL_HYSTORY/%1.docx").arg(name);
-}
-
-void DataBase::SyncLocalDocumentToDb()
-{
-    if (!patient_id_.has_value()) {
-        return;
-    }
-
-    const QString file_path = AllHystoryFilePath();
-    const QFileInfo info(file_path);
-    if (!info.exists() || !info.isFile() || info.size() <= 0) {
-        return;
-    }
-
-    QString error;
-    const auto latest = case_documents_.Latest(patient_id_.value(), "ALL_HYSTORY", &error);
-    if (!error.isEmpty()) {
-        ui->statusbar->showMessage("Не удалось проверить документ в базу");
-        return;
-    }
-
-    QFile file(file_path);
-    if (!file.open(QIODevice::ReadOnly)) {
-        return;
-    }
-    const QByteArray content = file.readAll();
-    file.close();
-    const QString local_hash =
-        QString::fromLatin1(QCryptographicHash::hash(content, QCryptographicHash::Sha256).toHex());
-
-    if (latest.has_value() && latest->sha256 == local_hash) {
-        return;
-    }
-
-    QMessageBox::StandardButton reply = QMessageBox::question(
-        this, "Синхронизация документа",
-        latest.has_value()
-            ? "Локальный DOCX отличается от версии в базе. Сохранить его как новую версию?"
-            : "Локальный DOCX ещё не сохранён в базу. Сохранить его сейчас?",
-        QMessageBox::Yes | QMessageBox::No);
-    if (reply != QMessageBox::Yes) {
-        return;
-    }
-
-    int version = 0;
-    if (!case_documents_.SaveVersion(patient_id_.value(), "ALL_HYSTORY", info.fileName(),
-                                     content, &version, &error)) {
-        QMessageBox::warning(this, "Ошибка сохранения в базу", error);
-        return;
-    }
-    ui->statusbar->showMessage(QString("Документ сохранён в базу, версия %1").arg(version));
-}
-
-void DataBase::OpenDocumentFromDb()
-{
-    if (!patient_id_.has_value()) {
-        QMessageBox::warning(this, "Внимание", "Сначала откройте сохранённый случай");
-        return;
-    }
-
-    QString error;
-    const auto version = case_documents_.Latest(patient_id_.value(), "ALL_HYSTORY", &error);
-    if (!error.isEmpty()) {
-        QMessageBox::warning(this, "Ошибка базы данных", error);
-        return;
-    }
-    if (!version.has_value()) {
-        QMessageBox::information(this, "Документ не найден", "В базе нет сохранённой истории для этого случая");
-        return;
-    }
-
-    QDir dir("Output/ALL_HYSTORY");
-    if (!dir.exists() && !dir.mkpath(".")) {
-        QMessageBox::warning(this, "Ошибка", "Не удалось создать каталог Output/ALL_HYSTORY");
-        return;
-    }
-    const QString file_path = dir.filePath(QString("from_db_%1_v%2.docx")
-                                            .arg(patient_id_.value()).arg(version->version_no));
-    QFile file(file_path);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        QMessageBox::warning(this, "Ошибка", file.errorString());
-        return;
-    }
-    file.write(version->content);
-    file.close();
-
-    QDesktopServices::openUrl(QUrl::fromLocalFile(QFileInfo(file_path).absoluteFilePath()));
-    ui->statusbar->showMessage(QString("Открыта версия %1 из базы данных").arg(version->version_no));
-}
-
-void DataBase::ShowDocumentVersions()
-{
-    if (!patient_id_.has_value()) {
-        QMessageBox::warning(this, "Внимание", "Сначала откройте сохранённый случай");
-        return;
-    }
-
-    QString error;
-    const auto versions = case_documents_.ListVersions(patient_id_.value(), "ALL_HYSTORY", &error);
-    if (!error.isEmpty()) {
-        QMessageBox::warning(this, "Ошибка базы данных", error);
-        return;
-    }
-    if (versions.empty()) {
-        QMessageBox::information(this, "Документ не найден", "В базе нет сохранённых версий для этого случая");
-        return;
-    }
-
-    QStringList items;
-    for (const auto& version : versions) {
-        items << QString("Версия %1 — %2 — %3 КБ")
-                 .arg(version.version_no)
-                 .arg(version.created_at.toString("dd.MM.yyyy hh:mm"))
-                 .arg(version.content.size() / 1024);
-    }
-
-    bool ok = false;
-    const QString selected = QInputDialog::getItem(
-        this, "Версии документа", "Выберите версию:", items, 0, false, &ok);
-    if (!ok || selected.isEmpty()) {
-        return;
-    }
-    const int index = items.indexOf(selected);
-    if (index < 0 || index >= static_cast<int>(versions.size())) {
-        return;
-    }
-    const auto& chosen = versions[static_cast<size_t>(index)];
-    if (chosen.version_no == versions.front().version_no) {
-        QMessageBox::information(this, "Версии документа", "Это уже последняя версия");
-        return;
-    }
-
-    QMessageBox::StandardButton reply = QMessageBox::question(
-        this, "Откат документа",
-        QString("Откатиться к версии %1? Текущая версия останется в базе, "
-                "а выбранная будет сохранена как новая.").arg(chosen.version_no),
-        QMessageBox::Yes | QMessageBox::No);
-    if (reply != QMessageBox::Yes) {
-        return;
-    }
-
-    int new_version = 0;
-    if (!case_documents_.SaveVersion(patient_id_.value(), "ALL_HYSTORY", chosen.file_name,
-                                     chosen.content, &new_version, &error)) {
-        QMessageBox::warning(this, "Ошибка сохранения в базу", error);
-        return;
-    }
-
-    const QString file_path = AllHystoryFilePath();
-    QDir dir("Output/ALL_HYSTORY");
-    if (!dir.exists() && !dir.mkpath(".")) {
-        QMessageBox::warning(this, "Ошибка", "Не удалось создать каталог Output/ALL_HYSTORY");
-        return;
-    }
-    QFile file(file_path);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        file.write(chosen.content);
-        file.close();
-        QDesktopServices::openUrl(QUrl::fromLocalFile(QFileInfo(file_path).absoluteFilePath()));
-    }
-    ui->statusbar->showMessage(QString("Создана версия %1 из версии %2").arg(new_version).arg(chosen.version_no));
-}

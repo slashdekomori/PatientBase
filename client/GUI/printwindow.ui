@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>560</width>
+    <width>458</width>
     <height>326</height>
    </rect>
   </property>
@@ -185,16 +185,6 @@ QPushButton:focus {
          <widget class="QPushButton" name="CancelButton">
           <property name="text">
            <string>Отмена</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="SaveToDbButton">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>Сохранить в базу</string>
           </property>
          </widget>
         </item>
