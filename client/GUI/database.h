@@ -20,6 +20,8 @@ namespace Ui {
 class DataBase;
 }
 
+class QTimer;
+
 class DataBase : public QMainWindow
 {
     Q_OBJECT
@@ -68,6 +70,7 @@ private slots:
     void on_action_triggered();
     void on_copy_triggered();
     void OpenSettingsWindow();
+    void AutosaveTimeout();
 
     // void on_ParseDiaries_button_clicked();
 
@@ -118,6 +121,11 @@ private:
 
     //настройка базы
     void SetSettings();
+
+    // автосохранение в PostgreSQL через минуту после последнего изменения
+    void ScheduleAutosave();
+    QTimer* autosave_timer_ = nullptr;
+    static constexpr int kAutosaveDelayMs = 60 * 1000;
 
 };
 

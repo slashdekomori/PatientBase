@@ -7,6 +7,7 @@
 #include <QCompleter>
 #include <QDate>
 #include <QSignalBlocker>
+#include <QTimer>
 
 
 namespace {
@@ -87,6 +88,12 @@ DataBase::DataBase(QWidget *parent)
 
 {
     ui->setupUi(this);
+
+    autosave_timer_ = new QTimer(this);
+    autosave_timer_->setSingleShot(true);
+    autosave_timer_->setInterval(kAutosaveDelayMs);
+    connect(autosave_timer_, &QTimer::timeout, this, &DataBase::AutosaveTimeout);
+
     ui->TabWidget->setCurrentIndex(0);
     widget_handler_.CollectWidgetFromTab(ui->TabWidget);
     // После появления QScrollArea штатные поля допобследований и дополнительные
@@ -118,6 +125,9 @@ DataBase::DataBase(QWidget *parent)
 
 
 void DataBase::closeEvent(QCloseEvent *event){
+    if (autosave_timer_) {
+        autosave_timer_->stop();
+    }
     if(!is_saved) {
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(this, "Внимание", "Вы не сохранили случай, сохранить перед завершение программы?",
@@ -241,12 +251,10 @@ void DataBase::FillForms(std::unordered_map<QString, QVariant>&& widgets_data) {
     widget_handler_.FillForms(std::move(widgets_data));
 
     const auto dop_rows = BuildDopObservationRows(widgets_data);
-    if (auto json_field = dop_analises_window.ui->DopObsledovaniyaJson) {
-        QSignalBlocker json_blocker(json_field);
-        dop_analises_window.SetRows(dop_rows);
-    } else {
-        dop_analises_window.SetRows(dop_rows);
-    }
+    // Не помечаем открытый случай как изменённый только потому, что заполнили формы.
+    QSignalBlocker dop_window_blocker(&dop_analises_window);
+    QSignalBlocker json_blocker(dop_analises_window.ui->DopObsledovaniyaJson);
+    dop_analises_window.SetRows(dop_rows);
 
     auto pos_id = widgets_data.find("id");
     if (pos_id != widgets_data.end()) {
@@ -262,6 +270,9 @@ void DataBase::FillForms(std::unordered_map<QString, QVariant>&& widgets_data) {
     // обозначим что данные поменялись
     is_changed_from_last_print = false;
     is_saved = false;
+    if (autosave_timer_) {
+        autosave_timer_->stop();
+    }
 
     CheckDopAnalises();
 
@@ -297,6 +308,9 @@ void DataBase::SearchButtonClicked(){
 
 
 void DataBase::SaveButtonClicked() {
+    if (autosave_timer_) {
+        autosave_timer_->stop();
+    }
 
     if (patient_id_ == std::nullopt) {
 
@@ -539,6 +553,14 @@ void DataBase::ConnectDopAnalisesWidgetsToDopAnalisesButton()
 
     connect(&dop_analises_window, &AddAnalisesWindow::RowsChanged,
             this, &DataBase::CheckDopAnalises);
+    // Динамически добавленные строки не попали в WidgetHandler, поэтому их
+    // изменения приходят через RowsChanged.
+    connect(&dop_analises_window, &AddAnalisesWindow::RowsChanged,
+            this, &DataBase::IsDataChangedFromLastPrint);
+    // Любой выход из окна допобследований сохраняет карточку так же,
+    // как основная кнопка "Сохранить".
+    connect(&dop_analises_window, &AddAnalisesWindow::ClientSaveRequested,
+            this, &DataBase::SaveButtonClicked);
 }
 
 const QString DataBase::GetDiagnosisContext(const QString& context) const {
@@ -624,6 +646,7 @@ void DataBase::IsDataChangedFromLastPrint() {
         is_changed_from_last_print = true;
         ui->statusbar->showMessage("начальные данные изменены");
     }
+    ScheduleAutosave();
 }
 
 void DataBase::ChangeNameToCorrect() {
@@ -889,6 +912,12 @@ void DataBase::on_copy_triggered() {
     ui->KelFactor->setCurrentText("не определялся");
     ui->OperationNumber->setText("");
     ui->OperationNumber2->setText("");
+
+    if (autosave_timer_) {
+        autosave_timer_->stop();
+    }
+    is_changed_from_last_print = false;
+    is_saved = false;
 }
 
 
@@ -908,3 +937,25 @@ void DataBase::on_copy_triggered() {
 
 // }
 
+
+void DataBase::ScheduleAutosave()
+{
+    if (!autosave_timer_) {
+        return;
+    }
+    // start() на уже работающем таймере перезапускает отсчёт,
+    // поэтому сохраняемся через минуту после ПОСЛЕДНЕГО изменения.
+    autosave_timer_->start(kAutosaveDelayMs);
+}
+
+void DataBase::AutosaveTimeout()
+{
+    if (!is_changed_from_last_print) {
+        return;
+    }
+
+    SaveButtonClicked();
+    if (!is_changed_from_last_print) {
+        ui->statusbar->showMessage("Автосохранение в PostgreSQL выполнено");
+    }
+}
