@@ -3102,6 +3102,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="tabChangesFocus">
                  <bool>true</bool>
                 </property>
+                <property name="acceptRichText">
+                 <bool>false</bool>
+                </property>
                </widget>
               </item>
               <item>
@@ -3217,6 +3220,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="tabChangesFocus">
                  <bool>true</bool>
+                </property>
+                <property name="acceptRichText">
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
@@ -3339,6 +3345,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="tabChangesFocus">
                  <bool>true</bool>
                 </property>
+                <property name="acceptRichText">
+                 <bool>false</bool>
+                </property>
                </widget>
               </item>
               <item row="0" column="2">
@@ -3460,6 +3469,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="tabChangesFocus">
                  <bool>true</bool>
                 </property>
+                <property name="acceptRichText">
+                 <bool>false</bool>
+                </property>
                </widget>
               </item>
               <item>
@@ -3580,6 +3592,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="tabChangesFocus">
                  <bool>true</bool>
+                </property>
+                <property name="acceptRichText">
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
