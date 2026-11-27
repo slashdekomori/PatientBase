@@ -60,7 +60,7 @@
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="MainInfo_tab">
        <attribute name="title">
@@ -3906,7 +3906,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="minimumDateTime">
                  <datetime>
-                  <hour>9</hour>
+                  <hour>6</hour>
                   <minute>0</minute>
                   <second>0</second>
                   <year>1989</year>
@@ -4043,7 +4043,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="minimumDateTime">
                  <datetime>
-                  <hour>9</hour>
+                  <hour>6</hour>
                   <minute>0</minute>
                   <second>0</second>
                   <year>1989</year>
@@ -5573,7 +5573,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="maximumDateTime">
              <datetime>
-              <hour>14</hour>
+              <hour>11</hour>
               <minute>59</minute>
               <second>59</second>
               <year>2099</year>
@@ -5583,7 +5583,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="minimumDateTime">
              <datetime>
-              <hour>17</hour>
+              <hour>13</hour>
               <minute>59</minute>
               <second>26</second>
               <year>1910</year>
@@ -5820,7 +5820,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>14</hour>
+                <hour>11</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -5830,7 +5830,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>13</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -5916,7 +5916,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>14</hour>
+                <hour>11</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -5926,7 +5926,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>13</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -6006,7 +6006,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>14</hour>
+                <hour>11</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -6016,7 +6016,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>13</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -6398,7 +6398,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="maximumDateTime">
              <datetime>
-              <hour>14</hour>
+              <hour>11</hour>
               <minute>59</minute>
               <second>59</second>
               <year>2099</year>
@@ -6408,7 +6408,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="minimumDateTime">
              <datetime>
-              <hour>17</hour>
+              <hour>13</hour>
               <minute>59</minute>
               <second>26</second>
               <year>1910</year>
@@ -6592,7 +6592,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="maximumDateTime">
              <datetime>
-              <hour>14</hour>
+              <hour>11</hour>
               <minute>59</minute>
               <second>59</second>
               <year>2099</year>
@@ -6602,7 +6602,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
             <property name="minimumDateTime">
              <datetime>
-              <hour>17</hour>
+              <hour>13</hour>
               <minute>59</minute>
               <second>26</second>
               <year>1910</year>
@@ -6719,7 +6719,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>14</hour>
+                <hour>11</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -6729,7 +6729,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>13</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -6817,7 +6817,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>14</hour>
+                <hour>11</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -6827,7 +6827,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>13</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -6915,7 +6915,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>14</hour>
+                <hour>11</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -6925,7 +6925,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>13</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -7013,7 +7013,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>14</hour>
+                <hour>11</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2099</year>
@@ -7023,7 +7023,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>17</hour>
+                <hour>13</hour>
                 <minute>59</minute>
                 <second>26</second>
                 <year>1910</year>
@@ -9723,7 +9723,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <x>0</x>
      <y>0</y>
      <width>1647</width>
-     <height>22</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
