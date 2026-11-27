@@ -151,10 +151,12 @@ void WidgetHandler::FillForms(const std::unordered_map<QString, QVariant>& widge
                 lineEdit->setText(widgets_data.at(lineEdit->objectName()).toString());
             } else if (auto textEdit = qobject_cast<QTextEdit*>(widget)) {
                 textEdit->setText(widgets_data.at(textEdit->objectName()).toString());
+            } else if (auto dateEdit = qobject_cast<QDateEdit*>(widget)) {
+                // QDateEdit наследует QDateTimeEdit, поэтому проверяем его раньше.
+                // Иначе date() уезжает на предыдущий день из-за перевода полуночи в UTC.
+                dateEdit->setDate(widgets_data.at(dateEdit->objectName()).toDate());
             } else if (auto dateTimeEdit = qobject_cast<QDateTimeEdit*>(widget)) {
                 dateTimeEdit->setDateTime(widgets_data.at(dateTimeEdit->objectName()).toDateTime());
-            } else if (auto dateEdit = qobject_cast<QDateEdit*>(widget)) {
-                dateEdit->setDate(widgets_data.at(dateEdit->objectName()).toDate());
             } else if (auto checkBox = qobject_cast<QCheckBox*>(widget)) {
                 checkBox->setChecked(widgets_data.at(checkBox->objectName()).toBool());
             } else if (auto comboBox = qobject_cast<QComboBox*>(widget)) {

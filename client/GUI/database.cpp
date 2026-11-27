@@ -340,7 +340,8 @@ void DataBase::SaveButtonClicked() {
 
 void DataBase::on_IncomeDate_editingFinished() {
     auto dates_widgets = widget_handler_.GetAllDates();
-    ui->IncomeDate->blockSignals(true);
+    // RAII гарантирует разблокировку signals и при досрочном выходе из функции.
+    QSignalBlocker income_date_blocker(ui->IncomeDate);
 
     if (dates_is_filled) {
         QMessageBox::StandardButton reply;
@@ -367,7 +368,6 @@ void DataBase::on_IncomeDate_editingFinished() {
         widget->blockSignals(false);
     }
     dates_is_filled = true;
-    ui->IncomeDate->blockSignals(false);
 }
 
 void DataBase::OutComeDateEditingFinished() {
