@@ -67,31 +67,6 @@ QString SafeFileName(const QString& file_name, const QString& fallback)
     return name;
 }
 
-QString AppendStatusSuffixToPath(const QString& file_path,
-                                 const QString& marker,
-                                 const QDateTime& when)
-{
-    const QFileInfo info(file_path);
-    QString base = info.completeBaseName();
-    if (base.contains(marker)) {
-        return file_path;
-    }
-
-    // Суффикс происхождения больше не нужен: остаётся только итоговый статус файла.
-    base.remove(QStringLiteral(" (из БД)"));
-
-    const QString suffix = QString(" (%1 %2)")
-                               .arg(marker, when.toString(QStringLiteral("dd.MM.yyyy hh-mm")));
-    const QDir dir = info.absoluteDir();
-    const QString extension = info.suffix().isEmpty() ? QString() : "." + info.suffix();
-    QString candidate = dir.filePath(base + suffix + extension);
-    for (int number = 2; QFileInfo::exists(candidate); ++number) {
-        candidate = dir.filePath(QString("%1%2 %3%4")
-                                     .arg(base, suffix, QString::number(number), extension));
-    }
-    return candidate;
-}
-
 void OpenDocument(const QString& file_path)
 {
     QDesktopServices::openUrl(QUrl::fromLocalFile(QFileInfo(file_path).absoluteFilePath()));
@@ -659,8 +634,9 @@ void PrintWindow::FinalizeDocumentFiles()
     }
 
     const QString selected_target =
-        AppendStatusSuffixToPath(selected_before, QStringLiteral("загружено в БД"),
-                                 QDateTime::currentDateTime());
+        CaseDocumentRepository::StatusSuffixPath(selected_before,
+                                                 QStringLiteral("загружено в БД"),
+                                                 QDateTime::currentDateTime());
     if (selected_target == selected_before) {
         ui->LoadLable->setText("Файл уже помечен как загруженный в базу");
     } else if (QFile::rename(selected_before, selected_target)) {
@@ -676,7 +652,8 @@ void PrintWindow::FinalizeDocumentFiles()
                                         ? alternative_viewed_at_
                                         : QDateTime::currentDateTime();
         const QString alternative_target =
-            AppendStatusSuffixToPath(alternative_file_path_, QStringLiteral("not valid"), viewed_at);
+            CaseDocumentRepository::StatusSuffixPath(alternative_file_path_,
+                                                     QStringLiteral("not valid"), viewed_at);
         if (alternative_target != alternative_file_path_ &&
             !QFile::rename(alternative_file_path_, alternative_target)) {
             QMessageBox::warning(this, "Ошибка",

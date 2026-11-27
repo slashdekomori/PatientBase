@@ -9739,6 +9739,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
     <addaction name="settings_action"/>
     <addaction name="make_copy_action"/>
+    <addaction name="import_local_histories_action"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -9757,6 +9758,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <action name="make_copy_action">
    <property name="text">
     <string>Создать копию случая</string>
+   </property>
+  </action>
+  <action name="import_local_histories_action">
+   <property name="text">
+    <string>Импорт локальных историй</string>
    </property>
   </action>
  </widget>

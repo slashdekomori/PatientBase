@@ -2,6 +2,7 @@
 
 #include <QCoreApplication>
 #include <QCryptographicHash>
+#include <QDir>
 #include <QFile>
 #include <QFileInfo>
 #include <QSettings>
@@ -31,6 +32,30 @@ QString HashOf(const QByteArray& content)
 }
 
 } // namespace
+
+QString CaseDocumentRepository::StatusSuffixPath(const QString& file_path,
+                                                 const QString& marker,
+                                                 const QDateTime& when)
+{
+    const QFileInfo info(file_path);
+    QString base = info.completeBaseName();
+    if (base.contains(marker)) {
+        return file_path;
+    }
+
+    base.remove(QStringLiteral(" (из БД)"));
+
+    const QString suffix = QString(" (%1 %2)")
+                               .arg(marker, when.toString(QStringLiteral("dd.MM.yyyy hh-mm")));
+    const QDir dir = info.absoluteDir();
+    const QString extension = info.suffix().isEmpty() ? QString() : "." + info.suffix();
+    QString candidate = dir.filePath(base + suffix + extension);
+    for (int number = 2; QFileInfo::exists(candidate); ++number) {
+        candidate = dir.filePath(QString("%1%2 %3%4")
+                                     .arg(base, suffix, QString::number(number), extension));
+    }
+    return candidate;
+}
 
 CaseDocumentRepository::CaseDocumentRepository()
 {
@@ -220,4 +245,35 @@ std::optional<CaseDocumentRepository::Document> CaseDocumentRepository::Load(
     document.sha256 = query.value(2).toString();
     document.updated_at = query.value(3).toDateTime();
     return document;
+}
+
+std::vector<CaseDocumentRepository::CaseMatch> CaseDocumentRepository::FindCases(
+    const QString& patient_fio, const QDate& income_date, QString* error) const
+{
+    std::vector<CaseMatch> result;
+    if (!EnsureConnection(error)) {
+        return result;
+    }
+
+    QSqlQuery query(db_);
+    query.prepare(
+        "SELECT id FROM database "
+        "WHERE lower(btrim(patientfio)) = lower(?) "
+        "AND incomedate >= ? AND incomedate < ? "
+        "ORDER BY id");
+    query.addBindValue(patient_fio.trimmed());
+    query.addBindValue(income_date.startOfDay());
+    query.addBindValue(income_date.addDays(1).startOfDay());
+
+    if (!query.exec()) {
+        SetError(error, query.lastError().text());
+        return result;
+    }
+
+    while (query.next()) {
+        CaseMatch match;
+        match.id = query.value(0).toInt();
+        result.push_back(match);
+    }
+    return result;
 }

@@ -178,6 +178,7 @@ void DataBase::ConnectAll() {
         }
     }
     connect(ui->make_copy_action, &QAction::triggered, this, &DataBase::on_copy_triggered);
+    connect(ui->import_local_histories_action, &QAction::triggered, this, &DataBase::ImportLocalHistories);
 }
 
 void DataBase::ConnectMedicines(){
@@ -961,4 +962,10 @@ void DataBase::AutosaveTimeout()
     if (!is_changed_from_last_print) {
         ui->statusbar->showMessage("Автосохранение в PostgreSQL выполнено");
     }
+}
+
+void DataBase::ImportLocalHistories()
+{
+    LocalHistoryImportDialog dialog(this, &case_documents_);
+    dialog.exec();
 }

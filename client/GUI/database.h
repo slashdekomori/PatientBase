@@ -10,6 +10,7 @@
 #include "Common/common.h"
 #include "Common/diariesparser.h"
 #include "GUI/addanaliseswindow.h"
+#include "GUI/localhistoryimportdialog.h"
 #include "GUI/settingswindow.h"
 #include "qevent.h"
 #include "searchwindow.h"
@@ -71,6 +72,7 @@ private slots:
     void on_action_triggered();
     void on_copy_triggered();
     void OpenSettingsWindow();
+    void ImportLocalHistories();
     void AutosaveTimeout();
 
     // void on_ParseDiaries_button_clicked();

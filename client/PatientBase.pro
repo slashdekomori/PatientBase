@@ -18,6 +18,7 @@ SOURCES += \
     Common/diariesparser.cpp \
     GUI/addanaliseswindow.cpp \
     GUI/database.cpp \
+    GUI/localhistoryimportdialog.cpp \
     GUI/printwindow.cpp \
     GUI/searchwindow.cpp \
     GUI/settingswindow.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     Common/diariesparser.h \
     GUI/addanaliseswindow.h \
     GUI/database.h \
+    GUI/localhistoryimportdialog.h \
     GUI/printwindow.h \
     GUI/searchwindow.h \
     GUI/settingswindow.h \
@@ -45,6 +47,7 @@ HEADERS += \
 FORMS += \
     GUI/addanaliseswindow.ui \
     GUI/database.ui \
+    GUI/localhistoryimportdialog.ui \
     GUI/printwindow.ui \
     GUI/searchwindow.ui \
     GUI/settingswindow.ui
