@@ -85,7 +85,7 @@ DataBase::DataBase(QWidget *parent)
     , case_documents_()
     , diaries_parser_(widget_handler_)
     , print_window(new PrintWindow(this, widget_handler_, &case_documents_))
-    , search_window(new SearchWindow(this, data_base_, mkb_map_))
+    , search_window(new SearchWindow(this, data_base_, mkb_map_, &case_documents_))
 
 {
     ui->setupUi(this);

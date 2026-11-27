@@ -3,18 +3,127 @@
 #include "qsqlerror.h"
 #include "ui_searchwindow.h"
 
+#include "Common/casedocumentrepository.h"
 
+#include <QDateTime>
+#include <QDesktopServices>
+#include <QDir>
+#include <QFile>
+#include <QFileInfo>
 #include <QMessageBox>
-#include <QSqlRecord>
 #include <QSqlQuery>
+#include <QSqlRecord>
+#include <QUrl>
+
+namespace {
+
+constexpr char kAllHistoryKind[] = "ALL_HYSTORY";
+
+QString SafeFileName(QString name)
+{
+    for (const QChar forbidden : QStringLiteral("/\\:*?\"<>|")) {
+        name.remove(forbidden);
+    }
+    return name.trimmed();
+}
+
+QString FormatIncomeDate(const QVariant& value)
+{
+    if (value.metaType().id() == QMetaType::QString) {
+        const QString text = value.toString().trimmed();
+        const int space = text.indexOf(' ');
+        return space > 0 ? text.left(space) : text;
+    }
+    const QDateTime date_time = value.toDateTime();
+    return date_time.isValid() ? date_time.toString(QStringLiteral("dd.MM.yyyy")) : QString();
+}
+
+QString AllHistoryBaseName(const std::unordered_map<QString, QVariant>& data)
+{
+    const auto fio_it = data.find(QStringLiteral("PatientFIO"));
+    const auto date_it = data.find(QStringLiteral("IncomeDate"));
+
+    QString name = fio_it != data.end() ? fio_it->second.toString().trimmed() : QString();
+    if (date_it != data.end()) {
+        const QString date = FormatIncomeDate(date_it->second);
+        if (!date.isEmpty()) {
+            if (!name.isEmpty()) {
+                name += " ";
+            }
+            name += date;
+        }
+    }
+    return SafeFileName(name);
+}
+
+QString ExportDocumentPath(const CaseDocumentRepository::Document& document,
+                           const std::unordered_map<QString, QVariant>& data)
+{
+    QString base = AllHistoryBaseName(data);
+    if (base.isEmpty()) {
+        base = SafeFileName(QFileInfo(document.file_name).completeBaseName());
+    }
+    if (base.isEmpty()) {
+        base = QStringLiteral("История болезни");
+    }
+
+    const QDir dir(QStringLiteral("Output/ALL_HYSTORY"));
+    const QString suffix = QStringLiteral(" (из БД)");
+    QString candidate = dir.filePath(base + suffix + QStringLiteral(".docx"));
+    for (int number = 2; QFileInfo::exists(candidate); ++number) {
+        candidate = dir.filePath(QString("%1%2 %3.docx").arg(base, suffix, QString::number(number)));
+    }
+    return candidate;
+}
+
+bool WriteDocumentToFile(const QByteArray& content,
+                         const QString& file_path,
+                         QString* error)
+{
+    const QFileInfo info(file_path);
+    QDir dir = info.absoluteDir();
+    if (!dir.exists() && !dir.mkpath(".")) {
+        if (error) {
+            *error = QString("Не удалось создать каталог: %1").arg(dir.absolutePath());
+        }
+        return false;
+    }
+
+    QFile file(file_path);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+        if (error) {
+            *error = file.errorString();
+        }
+        return false;
+    }
+    if (file.write(content) != content.size()) {
+        if (error) {
+            *error = QStringLiteral("Не удалось записать документ из базы");
+        }
+        return false;
+    }
+    file.close();
+    return true;
+}
+
+void OpenDocument(const QString& file_path)
+{
+    QDesktopServices::openUrl(QUrl::fromLocalFile(QFileInfo(file_path).absoluteFilePath()));
+}
+
+} // namespace
 
 
 
-SearchWindow::SearchWindow(QWidget *parent, SQLTable &sql_table, const MKBMap &mkb_map)
+SearchWindow::SearchWindow(QWidget *parent,
+                           SQLTable &sql_table,
+                           const MKBMap &mkb_map,
+                           CaseDocumentRepository* documents)
     : QDialog(parent)
     , ui(new Ui::SearchWindow)
     , sql_table_(sql_table)
     , mkb_map_(mkb_map)
+    , documents_(documents)
 {
     ui->setupUi(this);
 
@@ -256,16 +365,68 @@ void SearchWindow::DeleteCaseButtonClicked() {
     if(!index) {
         return;
     }
-    QMessageBox::StandardButton reply;
-    reply = QMessageBox::warning(this, "Внимание", "Вы точно хотите удалить случай без возможности востановления?",
-                                 QMessageBox::Yes | QMessageBox::No);
-    if (reply == QMessageBox::No) {
+
+    const int case_id = model_->data(model_->index(index.value().row(), 0)).toInt();
+    if (case_id <= 0) {
         return;
-    } else {
-        int index_i = model_->data(model_->index(index.value().row(), 0)).toInt();
-        sql_table_.DeleteRowById(index_i);
-        SelectWithLimit("");
     }
+
+    auto case_data = GetDataMapFromIndex(index.value());
+
+    CaseDocumentRepository::Document history;
+    bool has_history = false;
+    if (documents_) {
+        QString db_error;
+        const auto document = documents_->Load(case_id, QString::fromLatin1(kAllHistoryKind), &db_error);
+        if (!db_error.isEmpty()) {
+            QMessageBox::warning(this, "Ошибка базы данных", db_error);
+            return;
+        }
+        if (document.has_value() && !document->content.isEmpty()) {
+            history = *document;
+            has_history = true;
+        }
+    }
+
+    if (has_history) {
+        QMessageBox ask(this);
+        ask.setIcon(QMessageBox::Question);
+        ask.setWindowTitle("Удаление случая");
+        ask.setText(QStringLiteral("У случая есть сохранённая история в базе. "
+                                   "Просмотреть и сохранить её перед удалением?"));
+        QAbstractButton* save_and_open = ask.addButton("Просмотреть и сохранить", QMessageBox::AcceptRole);
+        QAbstractButton* delete_with_doc = ask.addButton("Удалить вместе с DOCX", QMessageBox::DestructiveRole);
+        ask.addButton("Отмена", QMessageBox::RejectRole);
+        ask.exec();
+
+        QAbstractButton* clicked = ask.clickedButton();
+        if (clicked != save_and_open && clicked != delete_with_doc) {
+            return;
+        }
+
+        if (clicked == save_and_open) {
+            const QString file_path = ExportDocumentPath(history, case_data);
+            QString file_error;
+            if (!WriteDocumentToFile(history.content, file_path, &file_error)) {
+                QMessageBox::warning(this, "Ошибка",
+                                     QString("Не удалось сохранить историю перед удалением:\n%1").arg(file_error));
+                return;
+            }
+            OpenDocument(file_path);
+        }
+    } else {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::warning(this, "Внимание", "Вы точно хотите удалить случай без возможности востановления?",
+                                     QMessageBox::Yes | QMessageBox::No);
+        if (reply == QMessageBox::No) {
+            return;
+        }
+    }
+
+    if (!sql_table_.DeleteRowById(case_id)) {
+        return;
+    }
+    SelectWithLimit("");
 }
 
 

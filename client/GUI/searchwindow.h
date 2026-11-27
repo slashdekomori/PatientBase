@@ -11,12 +11,17 @@ namespace Ui {
 class SearchWindow;
 }
 
+class CaseDocumentRepository;
+
 class SearchWindow : public QDialog
 {
     Q_OBJECT
 
 public:
-    SearchWindow(QWidget *parent, SQLTable &sql_table, const MKBMap& mkb_map);
+    SearchWindow(QWidget *parent,
+                 SQLTable &sql_table,
+                 const MKBMap& mkb_map,
+                 CaseDocumentRepository* documents);
     friend class DataBase;
     ~SearchWindow();
 
@@ -41,6 +46,7 @@ private:
 
     SQLTable& sql_table_;
     const MKBMap& mkb_map_;
+    CaseDocumentRepository* documents_ = nullptr;
     // QSqlTableModel* model_;
     QSqlQueryModel* model_;
 };

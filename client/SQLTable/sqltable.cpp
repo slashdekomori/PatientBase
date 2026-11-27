@@ -261,7 +261,29 @@ bool SQLTable::DeleteRowById(const int id) {
         return false;
     }
 
-    QSqlQuery query;
+    // Старые базы могут не иметь таблицы документов: удаление случая не должно из-за этого падать.
+    QSqlQuery table_check(db_);
+    if (!table_check.exec("SELECT to_regclass('case_documents')")) {
+        QMessageBox::warning(main_window, "Ошибка выполнения запроса: \"удаление случая\"", table_check.lastError().text());
+        db_.rollback(); // Отмена транзакции в случае ошибки
+        return false;
+    }
+    const bool has_documents_table = table_check.next() && !table_check.value(0).isNull();
+    table_check.finish();
+
+    if (has_documents_table) {
+        QSqlQuery documents_query(db_);
+        documents_query.prepare("DELETE FROM case_documents WHERE case_id = :id");
+        documents_query.bindValue(":id", id);
+        if (!documents_query.exec()) {
+            QMessageBox::warning(main_window, "Ошибка выполнения запроса: \"удаление DOCX случая\"", documents_query.lastError().text());
+            db_.rollback(); // Отмена транзакции в случае ошибки
+            return false;
+        }
+        documents_query.finish();
+    }
+
+    QSqlQuery query(db_);
     query.prepare("DELETE FROM DataBase WHERE id = :id");
     query.bindValue(":id", id);
 
