@@ -15,7 +15,7 @@
 
 ## Окружение
 
-Рекомендуется Python 3.12+. На Python 3.11 текущие исходники требуют правки f-строк (отдельный коммит).
+Поддерживается Python 3.11+ (проверено на 3.11.14).
 
 Linux:
 
@@ -36,8 +36,8 @@ py -3 -m venv .venv
 DocParser общается по stdin/stdout: клиент пишет `read_json\n` для генерации и `exit\n` при закрытии. `patient_data.json` читается и `Output/` пишутся в **текущий рабочий каталог**, поэтому запускать нужно из папки с ассетами.
 
 ```bash
-python DocParser.py
-python self_test.py
+python DocParser.py        # обычный режим, ждёт команд на stdin
+python DocParser.py /test  # встроенный self-test
 ```
 
 ## Сборка бинарников

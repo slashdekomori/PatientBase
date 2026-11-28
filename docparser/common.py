@@ -227,7 +227,7 @@ def parse_all_obsledovaniya_vstacionare_to_current_day(data, current_diary_day):
     # переберем циклом с даты поступления до даты предыдущего дневника,
     # чтобы получить все проведенные вмешательства
     while income_date <= previous_date:
-        key = f"AnalisesResult{income_date.strftime("%d.%m.%Y")}"
+        key = f"AnalisesResult{income_date.strftime('%d.%m.%Y')}"
         if key in data:
             dop_text += data[key] + "\n"
         income_date += timedelta(days=1)
@@ -322,7 +322,7 @@ def parse_all_consultations_to_current_day(data, current_diary_day):
     income_date = parse_income_date(data).date()
     result = []
     while income_date <= current_diary_day:
-        key = f"ConsultationsResult{income_date.strftime("%d.%m.%Y")}"
+        key = f"ConsultationsResult{income_date.strftime('%d.%m.%Y')}"
         if key in data:
             result.append(data[key])
         income_date += timedelta(days=1)
