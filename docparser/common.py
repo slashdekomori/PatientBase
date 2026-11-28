@@ -552,7 +552,7 @@ def parse_birthday_date(data):
 
 def parse_date_of_first_examination(data):
     if "DateOfFirstExamination_rus" not in data:
-        income_date = str_to_date_time(data["IncomeDate"])
+        income_date = parse_income_date(data)
         data["DateOfFirstExamination1_rus"] = income_date.strftime("%d.%m.%Y %H:%M")
         data["DateOfFirstExamination_rus"] = (
             income_date + timedelta(minutes=10)
@@ -561,29 +561,52 @@ def parse_date_of_first_examination(data):
     return data["DateOfFirstExamination"]
 
 
+def days_to_outcome(data):
+    income_date = parse_income_date(data)
+    outcome_date = parse_outcome_date(data)
+    return (outcome_date.date() - income_date.date()).days
+
+
+def round_minutes_to_ten(value):
+    """Округлить минуты до ближайшего десятка (30, 40, 50 и т.д.)."""
+    minute = value.minute
+    rounded = value.replace(minute=(minute // 10) * 10, second=0, microsecond=0)
+    if minute % 10 >= 5:
+        rounded += timedelta(minutes=10)
+    return rounded
+
+
 def parse_date_of_obhod_szaveduyusim_examination(data):
     if "ObhodDate_rus" not in data:
         income_date = parse_income_date(data)
-        if income_date is None:
-            income_date = data["IncomeDate"]
         outcome_date = parse_outcome_date(data)
-        if outcome_date is None:
-            outcome_date = data["OutComeDate"]
-        days_to_outcome = (outcome_date.date() - income_date.date()).days
-        if data.get("OtkazOtGospitalizacii") and 0 <= days_to_outcome <= 1:
+        days = days_to_outcome(data)
+        refusal = bool(data.get("OtkazOtGospitalizacii"))
+
+        if refusal and days == 0:
+            # Отказ в день поступления: обход между первичным осмотром и выпиской.
             first_examination = parse_date_of_first_examination(data)
-            interval_seconds = int((outcome_date - first_examination).total_seconds())
-            if interval_seconds > 20 * 60:
-                result_date = first_examination + timedelta(seconds=interval_seconds // 2)
+            if outcome_date <= first_examination:
+                result_date = outcome_date
             else:
-                result_date = min(
-                    first_examination + timedelta(minutes=10),
-                    outcome_date - timedelta(minutes=1),
+                middle = first_examination + (outcome_date - first_examination) / 2
+                result_date = round_minutes_to_ten(middle)
+                if result_date <= first_examination:
+                    result_date = first_examination + timedelta(minutes=1)
+                if result_date >= outcome_date:
+                    result_date = outcome_date - timedelta(minutes=1)
+        elif refusal and days == 1:
+            # Отказ на следующий день: обычные 08:30, но не позже выписки.
+            result_date = (income_date + timedelta(days=1)).replace(
+                hour=8, minute=30, second=0, microsecond=0
+            )
+            if outcome_date < result_date:
+                result_date = max(
+                    outcome_date - timedelta(minutes=10),
+                    (income_date + timedelta(days=1)).replace(
+                        hour=0, minute=0, second=0, microsecond=0
+                    ),
                 )
-            if result_date <= first_examination:
-                result_date = first_examination + timedelta(minutes=1)
-            if result_date >= outcome_date:
-                result_date = outcome_date - timedelta(minutes=1)
         else:
             start_time = income_date.replace(hour=0, minute=0)
             end_time = income_date.replace(hour=8, minute=0)
@@ -592,7 +615,8 @@ def parse_date_of_obhod_szaveduyusim_examination(data):
                 if start_time <= income_date <= end_time
                 else end_time + timedelta(days=1)
             )
-            result_date = result_date.replace(minute=30)
+            result_date = result_date.replace(minute=30, second=0, microsecond=0)
+
         data["ObhodDate_rus"] = result_date.strftime("%d.%m.%Y %H:%M")
         data["ObhodDate"] = result_date
     return data["ObhodDate"]
@@ -654,24 +678,18 @@ def parse_operations_dates(data, index):
 
 def parse_income_date(data):
     if "IncomeDate_rus" not in data:
-        income_date = data["IncomeDate"]
-        data["IncomeDate_rus"] = str_to_date_time(income_date).strftime(
-            "%d.%m.%Y %H:%M"
-        )
-        data["IncomeDate"] = str_to_date_time(income_date)
-    else:
-        return data["IncomeDate"]
+        income_date = str_to_date_time(data["IncomeDate"])
+        data["IncomeDate_rus"] = income_date.strftime("%d.%m.%Y %H:%M")
+        data["IncomeDate"] = income_date
+    return data["IncomeDate"]
 
 
 def parse_outcome_date(data):
     if "OutComeDate_rus" not in data:
-        outcome_date = data["OutComeDate"]
-        data["OutComeDate_rus"] = str_to_date_time(outcome_date).strftime(
-            "%d.%m.%Y %H:%M"
-        )
-        data["OutComeDate"] = str_to_date_time(outcome_date)
-    else:
-        return data["OutComeDate"]
+        outcome_date = str_to_date_time(data["OutComeDate"])
+        data["OutComeDate_rus"] = outcome_date.strftime("%d.%m.%Y %H:%M")
+        data["OutComeDate"] = outcome_date
+    return data["OutComeDate"]
 
 
 def parse_income_and_outcome_date(data):

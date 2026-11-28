@@ -23,20 +23,22 @@ def ParseObhodSZaveduyushim(data):
     )
 
     common.parse_analises_to_current_date(data, round_examination)
-    outcome_date = common.parse_outcome_date(data)
-    days_to_outcome = (outcome_date.date() - common.parse_income_date(data).date()).days
-    is_early_refusal = (
-        data.get("OtkazOtGospitalizacii") and 0 <= days_to_outcome <= 1
-    )
+    days = common.days_to_outcome(data)
+    is_early_refusal = data.get("OtkazOtGospitalizacii") and 0 <= days <= 1
     if is_early_refusal:
         # AllExaminationsToCurrentDay и AllConsultationsToCurrentDay уже заполнены
         # выписным эпикризом, т.к. print_hystory рендерит документы в обратном порядке.
-        data["AllMedicalInveromentsToCurrentDay"] = (
+        # Выполненные вмешательства восстанавливаем здесь, чтобы отдельная печать
+        # обхода тоже показывала их, а не текст отказа.
+        common.parse_all_medical_inveroments_to_current_day(
+            data, round_examination + timedelta(days=1)
+        )
+        data["RecomendationsExaminationSec"] = "нет"
+        data["RecomendationsTreatmentSec"] = (
             "Стационарное лечение прекращено по инициативе пациента. "
             "Отказ от дальнейшего стационарного лечения оформлен в письменном виде, "
             "последствия отказа разъяснены."
         )
-        data["RecomendationsExaminationSec"] = "нет"
         data["CurrentNaznacheniya"] = "нет"
     else:
         common.parse_all_obsledovaniya_vstacionare_to_current_day(

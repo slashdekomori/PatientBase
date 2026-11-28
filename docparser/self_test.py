@@ -255,6 +255,77 @@ def check_dates():
     return "русские даты преобразованы"
 
 
+def check_round_examination_dates():
+    def obhod_date(income, outcome, refusal=True):
+        data = TrackedDict(
+            {
+                "IncomeDate": income,
+                "OutComeDate": outcome,
+                "OtkazOtGospitalizacii": refusal,
+            }
+        )
+        return common.parse_date_of_obhod_szaveduyusim_examination(data).strftime(
+            "%d.%m.%Y %H:%M"
+        )
+
+    expect_equal(
+        obhod_date("02.11.2026 15:55", "02.11.2026 17:25"),
+        "02.11.2026 16:50",
+        "отказ в тот же день, середина интервала",
+    )
+    expect_equal(
+        obhod_date("02.11.2026 15:55", "02.11.2026 16:20"),
+        "02.11.2026 16:10",
+        "отказ в тот же день, короткий интервал",
+    )
+    expect_equal(
+        obhod_date("02.11.2026 15:55", "03.11.2026 12:00"),
+        "03.11.2026 08:30",
+        "отказ на следующий день",
+    )
+    expect_equal(
+        obhod_date("02.11.2026 15:55", "03.11.2026 08:20"),
+        "03.11.2026 08:10",
+        "отказ на следующий день, выписка до 08:30",
+    )
+    expect_equal(
+        obhod_date("02.11.2026 15:55", "03.11.2026 12:00", refusal=False),
+        "03.11.2026 08:30",
+        "обычный обход без отказа",
+    )
+    return "даты обхода для отказа и обычного режима"
+
+
+def check_refusal_fields():
+    data = TrackedDict(test_data.make_case(test_data.CASES[0]))
+    data["OtkazOtGospitalizacii"] = True
+    data["IncomeDate"] = "02.11.2026 15:55"
+    data["OutComeDate"] = "02.11.2026 17:25"
+    common.parse_all_dates_in_rus(data)
+
+    with dry_render():
+        ParsOBhodsZaveduyushim.ParseObhodSZaveduyushim(data)
+
+    interventions = data["AllMedicalInveromentsToCurrentDay"]
+    expect(
+        "Стационарное лечение прекращено" not in interventions,
+        "текст отказа попал в выполненные медицинские вмешательства",
+    )
+    expect(
+        data.get("Analises02.11.2026", "") in interventions,
+        "выполненные медицинские вмешательства не подгрузились",
+    )
+    expect(
+        "Стационарное лечение прекращено" in data["RecomendationsTreatmentSec"],
+        "текст отказа не попал в план лечения",
+    )
+    expect_equal(
+        data["RecomendationsExaminationSec"], "нет", "план обследования при отказе"
+    )
+    expect_equal(data["CurrentNaznacheniya"], "нет", "назначения при отказе")
+    return "вмешательства и план лечения разделены"
+
+
 def check_condition_dynamics():
     data = TrackedDict(
         {
@@ -309,6 +380,8 @@ def run():
     run_check("constants: состояния пациента", check_constants, report)
     run_check("constants: распределение по дням", check_stage_mapping, report)
     run_check("dates: разбор русских дат", check_dates, report)
+    run_check("dates: дата обхода при отказе", check_round_examination_dates, report)
+    run_check("отказ: поля обхода", check_refusal_fields, report)
     run_check("diaries: динамика состояния", check_condition_dynamics, report)
 
     for case in test_data.CASES:
