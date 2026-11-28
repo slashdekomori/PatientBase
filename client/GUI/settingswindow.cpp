@@ -4,6 +4,7 @@
 #include <QAbstractItemView>
 #include <QInputDialog>
 #include <QJsonArray>
+#include <QJsonDocument>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidgetItem>
@@ -447,14 +448,33 @@ void SettingsWindow::SaveButtonClicked()
         return;
     }
 
-    if (!storage_.Save(data, &error)) {
-        SetStatus(error, true);
-        QMessageBox::warning(this, "Настройки", error);
+    // Сервер — источник истины; локальный файл нужен DocParser и текущим виджетам.
+    const bool saved_to_db = repository_.Save(data, &error);
+    QString local_error;
+    if (!storage_.Save(data, &local_error)) {
+        SetStatus(local_error, true);
+        QMessageBox::warning(this, "Настройки", local_error);
         return;
     }
 
     source_data_ = data;
-    SetStatus("Настройки сохранены.");
+    if (saved_to_db) {
+        // Локальная копия теперь совпадает с сервером — помечаем как синхронизированную.
+        const QByteArray bytes = QJsonDocument(data).toJson(QJsonDocument::Indented);
+        QString hash_error;
+        if (!storage_.WriteHash(DepartmentInfoStorage::Hash(bytes), &hash_error)) {
+            SetStatus(hash_error, true);
+        } else {
+            SetStatus("Настройки сохранены в базе данных и локально.");
+        }
+    } else {
+        // Метку не обновляем: при следующем запуске локальные изменения уйдут на сервер.
+        SetStatus(QString("Не удалось записать настройки в базу: %1\n"
+                          "Изменения сохранены локально и будут загружены на сервер "
+                          "при следующем запуске.")
+                      .arg(error), true);
+    }
+
     QMessageBox::information(this, "Настройки",
                              "Настройки сохранены.\n\n"
                              "Перезапустите программу, чтобы изменения списков "

@@ -369,3 +369,18 @@ CREATE TABLE IF NOT EXISTS case_documents (
 
 CREATE UNIQUE INDEX IF NOT EXISTS case_documents_current_uq
     ON case_documents(case_id, kind);
+
+-- Настройки отделения (DepartmentInfo.json) хранятся на сервере.
+-- Клиент читает их перед запуском и обновляет локальный файл-кэш.
+CREATE TABLE IF NOT EXISTS department_info (
+    id integer PRIMARY KEY CHECK (id = 1),
+    content jsonb NOT NULL,
+    updated_at timestamptz NOT NULL DEFAULT now()
+);
+
+-- Блокировка окна настроек, чтобы его не редактировали одновременно.
+CREATE TABLE IF NOT EXISTS department_info_lock (
+    id integer PRIMARY KEY CHECK (id = 1),
+    locked_by text NOT NULL,
+    locked_at timestamptz NOT NULL DEFAULT now()
+);

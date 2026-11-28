@@ -3,9 +3,12 @@
 #include "ui_addanaliseswindow.h"
 #include "ui_database.h"
 
+#include "Common/departmentinforepository.h"
+
 #include <QAction>
 #include <QCompleter>
 #include <QDate>
+#include <QMessageBox>
 #include <QSignalBlocker>
 #include <QTimer>
 
@@ -810,10 +813,29 @@ void DataBase::AddAnalisesButtonClicked() {
 
 
 void DataBase::OpenSettingsWindow() {
+    DepartmentInfoLock lock;
+    QString details;
+    QString error;
+    const DepartmentInfoLock::Result lock_result = lock.Acquire(&details, &error);
+    if (lock_result == DepartmentInfoLock::Result::Busy) {
+        QMessageBox::warning(this, QStringLiteral("Настройки отделения"),
+                             QStringLiteral("Файл настроек сейчас редактируется: %1.\n"
+                                            "Попробуйте позже.")
+                                 .arg(details));
+        return;
+    }
+    if (lock_result == DepartmentInfoLock::Result::Error) {
+        QMessageBox::warning(this, QStringLiteral("Настройки отделения"),
+                             QStringLiteral("Не удалось заблокировать настройки: %1")
+                                 .arg(error));
+        return;
+    }
+
     // Создаём окно заново при каждом открытии, чтобы отмена не оставляла
     // несохранённые изменения в повторно открытом диалоге.
     SettingsWindow window(this);
     window.exec();
+    lock.Release();
 }
 
 

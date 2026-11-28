@@ -15,6 +15,7 @@ SOURCES += \
     Common/casedocumentrepository.cpp \
     Common/common.cpp \
     Common/departmentinfostorage.cpp \
+    Common/departmentinforepository.cpp \
     Common/diariesparser.cpp \
     GUI/addanaliseswindow.cpp \
     GUI/database.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     Common/casedocumentrepository.h \
     Common/common.h \
     Common/departmentinfostorage.h \
+    Common/departmentinforepository.h \
     Common/diariesparser.h \
     GUI/addanaliseswindow.h \
     GUI/database.h \

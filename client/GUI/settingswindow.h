@@ -8,6 +8,7 @@
 #include <QStringList>
 
 #include "Common/departmentinfostorage.h"
+#include "Common/departmentinforepository.h"
 
 class QLineEdit;
 class QTableWidget;
@@ -57,6 +58,7 @@ private:
 
     Ui::SettingsWindow* ui;
     DepartmentInfoStorage storage_;
+    DepartmentInfoRepository repository_;
     QJsonObject source_data_;
     QHash<QString, QLineEdit*> string_editors_;
     QHash<QString, QStringList> list_values_;

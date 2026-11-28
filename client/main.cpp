@@ -1,9 +1,11 @@
 #include "GUI/database.h"
+#include "Common/departmentinforepository.h"
 
 #include <QApplication>
 #include <QFile>
 #include <QFontDatabase>
 #include <QLocale>
+#include <QMessageBox>
 #include <QTranslator>
 // #include <QSharedMemory>
 // #include <QSystemSemaphore>
@@ -47,6 +49,15 @@ int main(int argc, char *argv[])
     // }
 
     // sharedMemory.create(1);
+
+    // Настройки отделения хранятся на сервере; локальный файл обновляем до
+    // создания главного окна, чтобы SettingsSetter и DocParser видели актуальные данные.
+    QString department_info_warning;
+    DepartmentInfoRepository::Synchronize(&department_info_warning);
+    if (!department_info_warning.isEmpty()) {
+        QMessageBox::warning(nullptr, QStringLiteral("Настройки отделения"),
+                             department_info_warning);
+    }
 
     DataBase db;
     db.showMaximized();
