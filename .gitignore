@@ -7,6 +7,7 @@
 
 # DocParser: generated/local data
 /docparser/.venv/
+/docparser/.venv-win/
 /docparser/__pycache__/
 /docparser/Output/
 /docparser/patient_data.json

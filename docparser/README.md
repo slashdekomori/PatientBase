@@ -42,4 +42,19 @@ python DocParser.py /test  # встроенный self-test
 
 ## Сборка бинарников
 
-Клиент запускает не `.py`, а `DocParser.exe` (Windows) или `DocParser.bin` (Linux) — см. `client/GUI/printwindow.cpp`. Поэтому после изменения исходников бинарники нужно пересобирать из этого каталога и класть рядом с клиентом. Готовый рецепт сборки пока не зафиксирован; в текущем venv доступен `nuitka`.
+Клиент запускает не `.py`, а `DocParser.exe` (Windows) или `DocParser.bin` (Linux) — см. `client/GUI/printwindow.cpp`. Поэтому после изменения исходников бинарники нужно пересобирать из этого каталога и класть рядом с клиентом.
+
+Linux (из этого каталога, `patchelf` должен быть в `PATH`):
+
+```bash
+python -m nuitka --onefile --standalone --remove-output DocParser.py
+cp DocParser.bin ../client/DocParser.bin
+```
+
+Windows (PowerShell, требуется Python 3.12):
+
+```powershell
+.\build_windows.ps1
+```
+
+Скрипт сам создаст `.venv-win`, поставит зависимости и обновит `client/DocParser.exe`.
