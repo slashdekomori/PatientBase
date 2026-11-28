@@ -4,3 +4,13 @@
 /dist-*/
 /*.zip
 */build/
+
+# DocParser: generated/local data
+/docparser/.venv/
+/docparser/__pycache__/
+/docparser/Output/
+/docparser/patient_data.json
+/docparser/docparser.build/
+/docparser/docparser.dist/
+/docparser/docparser.onefile-build/
+/docparser/nuitka-crash-report.xml
